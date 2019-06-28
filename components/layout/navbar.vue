@@ -1,20 +1,20 @@
 <template>
   <nav class="nav full-height">
     <div class="drawer full-height">
-      <a href="#" @click="$store.commit('toggle_sidebar')"><i class="fas fa-bars"></i></a>
+      <a href="#" @click="$store.commit('layout/toggle_sidebar')"><i class="fas fa-bars"></i></a>
     </div>
     <ul class="nav-menu full-height">
       <li v-for="menu in menus" :key="menu.id">
-        <a href="#" @click="test">{{menu.title}}</a>
+        <a href="#">{{menu.title}}</a>
       </li>
       <div class="nav-buttons">
         <div class="alarm-wrapper">
-          <a href="#" class="nav-button">
+          <a href="#" class="nav-button" @click="$store.commit('layout/toggle_dropdown')">
             <i class="far fa-bell alarm">
               <span class="newAlarmCount">2</span>
             </i>
           </a>
-          <ul class="dropdown">
+          <ul class="dropdown" v-if="toggle">
             <DropdownList 
               v-for = "alarm in alarms" 
               :key = "alarm.id"
@@ -33,6 +33,8 @@
 <script>
 import DropdownList from '@/components/layout/dropdown-list.vue'
 
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
@@ -48,13 +50,16 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapGetters({
+      toggle: "layout/dropdownShow"
+    })
+  },
   components: {
     DropdownList
   },
   methods: {
-    test () {
-      console.log(this.$store.getters)
-    }
+    
   }
 }
 </script>
@@ -134,18 +139,18 @@ export default {
 .dropdown {
   display: flex;
   flex-flow: column;
-  height: 30%;
+  height: 40%;
   width: 200px;
-  overflow-y: scroll;
   background-color: white;
+  border-radius: 5px;
   position: absolute;
-  top: 50px;
+  top: 40px;
   right: 50px;
 
   .dropdown-list {
     color: black;
   }
-  @include container-scroll-y;
+  @include container-scrollbar-none;
   @include right-and-left-shadow;
 }
 

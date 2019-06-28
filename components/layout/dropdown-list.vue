@@ -21,5 +21,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.dropdown-list {
+  padding: 10px;
+  @include thin-border-bottom;
+}
 </style>

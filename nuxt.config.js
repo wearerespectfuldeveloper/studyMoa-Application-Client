@@ -28,6 +28,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    
   ],
   /*
   ** Nuxt.js modules
@@ -52,6 +53,9 @@ export default {
   ** Build configuration
   */
   build: {
+    vendor: [
+      'bootstrap'
+    ],
     /*
     ** You can extend webpack config here
     */
