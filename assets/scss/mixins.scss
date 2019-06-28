@@ -1,26 +1,4 @@
-// 기타 설정
-
-.full-height {
-  height: 100%;
-}
-
-// 네비게이션
-@mixin navList {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 5% 0 5%;
-  ul {
-    display: flex;
-    flex: 1 0 80%;
-    height: 100%;
-    margin: 0;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  @include anchor-list-light
-}
-
+// 링크 리스트 텍스트
 @mixin anchor-list-light {
   li {
     list-style-type: none;
@@ -51,66 +29,24 @@
   }
 }
 
-@mixin btnList {
-  flex: 1 0 5%;
-  display: flex;
-  align-items: center;
-  a {
-    text-decoration: none;
-    color: white;
-    font-weight: 800;
-    &:hover {
-      color: #e0f4fd;
-    }
-  }
-
-  .loginButton {
-    text-decoration: none;
-    color: white;
-    i {
-      padding: 10px;
-      font-size: 20px;
-    }
-    &:hover {
-      color: #e0e6fd;
-    }
-  }
-  
+// 그림자
+@mixin right-and-left-shadow {
+  box-shadow: 10px 10px 5px -10px rgba(173, 161, 161, 0.64);
 }
 
-// 사이드 바
-
-@mixin sidebar {
-  height: 100%;
-  ul {
-    padding: 10px;
-    color : #303030;
-    font-weight: 700;
-    h5 {
-      &:nth-child(1) {
-        margin-top: 20px;
-      }
-      font-weight: 700;
-      padding: 10px;
-      border-bottom: 0.5px solid rgba(0,0,0,0.5);
-      padding-bottom: 10px;
-    }
-    li {
-      padding: 10px;
-    }
-  }
-  @include anchor-list-dark
+// 스크롤
+@mixin container-scroll-y {
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+		width: 10px;
+    background: none;
+	}
+	&::-webkit-scrollbar-thumb {
+      background: grey;
+      border-radius: 50px;
+	    opacity: .4;
+	}
+	&::-webkit-scrollbar-track {
+	    background: none;
+	}
 }
-
-// 쉐도우
-@mixin bottom-shadow {
-  box-shadow: -4px 10px 12px -13px rgba(0,0,0,0.5);
-}
-
-// 푸터
-@mixin footer {
-  position: relative;
-  bottom: 0;
-  background-color: #696969;
-}
-

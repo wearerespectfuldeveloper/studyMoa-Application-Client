@@ -1,0 +1,115 @@
+// 기타 설정
+
+.full-height {
+  height: 100%;
+}
+
+// 네비게이션
+@mixin navList {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 5% 0 5%;
+  ul {
+    display: flex;
+    flex: 1 0 80%;
+    height: 100%;
+    margin: 0;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  @include anchor-list-light
+}
+
+@mixin anchor-list-light {
+  li {
+    list-style-type: none;
+    color: white;
+    a {
+      text-decoration: none;
+      color: white;
+      font-weight: 800;
+      &:hover {
+        color: #e0f4fd;
+      }
+    }
+  }
+}
+
+@mixin anchor-list-dark {
+  li {
+    list-style-type: none;
+    color: #303030;
+    a {
+      text-decoration: none;
+      color: #303030;
+      font-weight: 800;
+      &:hover {
+        color: #7e7e7e;
+      }
+    }
+  }
+}
+
+@mixin btnList {
+  flex: 1 0;
+  display: flex;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
+    &:hover {
+      color: #e0f4fd;
+    }
+  }
+
+  .loginButton {
+    text-decoration: none;
+    color: white;
+    i {
+      padding: 10px;
+      font-size: 20px;
+    }
+    &:hover {
+      color: #e0e6fd;
+    }
+  }
+}
+
+// 사이드 바
+
+@mixin sidebar {
+  height: 100%;
+  ul {
+    padding: 10px;
+    color : #303030;
+    font-weight: 700;
+    h5 {
+      &:nth-child(1) {
+        margin-top: 20px;
+      }
+      font-weight: 700;
+      padding: 10px;
+      border-bottom: 0.5px solid rgba(0,0,0,0.5);
+      padding-bottom: 10px;
+    }
+    li {
+      padding: 10px;
+    }
+  }
+  @include anchor-list-dark
+}
+
+// 쉐도우
+@mixin bottom-shadow {
+  box-shadow: -4px 10px 12px -13px rgba(0,0,0,0.5);
+}
+
+// 푸터
+@mixin footer {
+  position: relative;
+  bottom: 0;
+  background-color: #696969;
+}
+

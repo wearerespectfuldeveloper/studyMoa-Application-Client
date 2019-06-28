@@ -1,25 +1,9 @@
-html, body, #__nuxt, #__layout, .full-height {
+html, body, #__nuxt, #__layout, #grid, .full-height {
   height: 100%;
 }
 
-@media screen and (min-width: 960px) {
-  
-
+.full-width {
+  width: 100%;
 }
 
-@media screen and (max-width: 960px) {
-
-  main {
-    
-    aside {
-      display: none;
-      grid-column: 1 / 11;
-    }
-    
-  }
-
-  .button-item {
-    
-  }
-}
 
