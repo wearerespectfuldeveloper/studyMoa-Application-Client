@@ -87,27 +87,23 @@ export default {
       text-decoration: none;
       font-weight: 800;
     }
-    @include change-width-effect;
   }
 
   header {
     grid-row: 1 / 2;
     background-color: $navbarColor;
     @include thin-border-bottom;
-    @include change-width-effect;
   }
   
   aside {
     grid-row: 2 / 13;
     background-color: $sidebarColor;
     @include thin-border-right;
-    @include change-width-effect;
   }
 
   content {
     grid-row: 2 / 13;
     background-color: $contentColor;
-    @include change-width-effect;
   }
 
   .side-min-on {
@@ -146,5 +142,4 @@ export default {
 
 }
 
-// 아코 이런...겹치는 걸 생각 못했네
 </style>

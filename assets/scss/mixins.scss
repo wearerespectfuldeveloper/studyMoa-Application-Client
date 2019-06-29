@@ -115,6 +115,10 @@
   }
 }
 
-@mixin change-width-effect {
-  transition: grid-column 1s;
+// 플렉스 컨테이너
+
+@mixin container-fleximize {
+
 }
+
+// 그리드 컨테이너

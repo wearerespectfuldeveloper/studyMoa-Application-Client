@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar full-height">
     <ul v-for="content in sidebarContent" :key="content.title">
-      <h5 class="disappear"><i :class="'fas fa-' + content.icon"></i>{{content.title}}</h5>
+      <span class="disappear-head">{{content.title}}</span>
       <li v-for="sub in content.subs" :key="sub">
         <a href="#"><i :class="'fas fa-' + sub.icon"></i><span class="disappear">{{sub.title}}</span></a>
       </li>
@@ -55,25 +55,26 @@ export default {
 
 ul {
   padding: 10px;
-  color : #303030;
-  font-weight: 700;
-  h5 {
-    &:nth-child(1) {
-      margin-top: 20px;
-    }
-    font-weight: 700;
+  color: rgb(82, 82, 82);
+  font-weight: 600;
+  margin-top: 20px;
+  margin-left: 10px;  
+
+  .disappear {
     padding: 10px;
-    border-bottom: 0.5px solid rgba(0,0,0,0.5);
-    padding-bottom: 10px;
-    i {
-      padding-right: 10px;
-    }
+    margin-bottom: 10px;
   }
+
   li {
     padding: 10px;
-    i {
-      padding-right: 10px;
+    a {
+      color: rgb(82, 82, 82);
+      i {
+        color: $navbarColor;
+        margin-left: 10px;
+      }
     }
+    
   }
 }
 
@@ -85,18 +86,14 @@ ul {
   ul {
     li {
       i {
-        padding-right: 0;
+        padding: 0;
+        margin: 0 !important;
       }
     }
   }
   
 }
 
-
-// .sidebar 
-//   @include sidebar;
-//   
-// 
 
 
 
