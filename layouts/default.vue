@@ -40,8 +40,6 @@ export default {
       toggle: 'layout/sidebarMinimize'
     })
   },
-  mounted () {
-  },
   components: {
     Nav,
     Sidebar,
@@ -89,25 +87,27 @@ export default {
       text-decoration: none;
       font-weight: 800;
     }
+    @include change-width-effect;
   }
 
   header {
     grid-row: 1 / 2;
     background-color: $navbarColor;
     @include thin-border-bottom;
+    @include change-width-effect;
   }
   
   aside {
     grid-row: 2 / 13;
-    grid-column: 1 / 4;
     background-color: $sidebarColor;
     @include thin-border-right;
+    @include change-width-effect;
   }
 
   content {
     grid-row: 2 / 13;
-    grid-column: 4 / 17;
     background-color: $contentColor;
+    @include change-width-effect;
   }
 
   .side-min-on {
@@ -127,22 +127,6 @@ export default {
   }
 
 @media screen and (max-width: 960px) {
-
-  header {
-    grid-row: 1 / 2;
-    background-color: $navbarColor;
-    
-  }
-  
-  aside {
-    grid-row: 2 / 13;
-    background-color: $sidebarColor;
-  }
-  
-  content {
-    grid-row: 2 / 13;
-    grid-column: 2 / 17;
-  }
 
   .side-min-on {
     @include mobileSideMinOnGrid;

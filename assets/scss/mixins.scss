@@ -105,3 +105,16 @@
 @mixin mobileMainMinOffGrid {
   grid-column: 2 / 17;
 }
+
+// 애니메이션
+
+@mixin hover-color-effect($color) {
+  transition: background-color 0.5s;
+  &:hover {
+    background-color: $color;
+  }
+}
+
+@mixin change-width-effect {
+  transition: grid-column 1s;
+}
