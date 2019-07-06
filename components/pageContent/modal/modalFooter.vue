@@ -16,7 +16,7 @@ export default {
   display: flex;
   justify-content: space-between;
   .modal-footer-button {
-    @include text-anchor-button($modalFooterButtonColor);
+    @include text-anchor-button(red);
     @include button-color-transition(none, $modalFooterHoverButtonColor);
     padding: 10px;
   }

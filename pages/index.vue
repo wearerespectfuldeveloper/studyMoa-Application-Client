@@ -47,13 +47,13 @@
             ></component>
           </component>
         </div>
-
       </Block>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 
 export default {
   data () {
@@ -71,6 +71,14 @@ export default {
         {name: 'person2', role: '백엔드', id: 1 }
       ]
     }
+  },
+  computed: {
+    ...mapState('inquire', {
+      test: state => state.test
+    })
+  },
+  mounted () {
+    alert(this.test);
   },
   components: {
     // 유기체 컴포넌트 import
