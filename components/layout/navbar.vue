@@ -19,11 +19,14 @@
               v-for = "alarm in alarms" 
               :key = "alarm.id"
               :text = "alarm.text"
+              :type = "alarm.type"
             />
           </ul>
         </div>
         
-        <a href="" class="nav-button"><i class="fas fa-sign-in-alt"></i>로그인</a>
+        <a href="" class="nav-button">
+          <i class="fas fa-sign-in-alt"></i>로그인
+        </a>
       </div>
     </ul>
     
@@ -33,7 +36,7 @@
 <script>
 import DropdownList from '@/components/layout/dropdown-list.vue'
 
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   data() {
@@ -43,16 +46,19 @@ export default {
         
       ],
       alarms: [
-        {text: "swon3210님이 초대를 승낙하셨습니다", id: 0},
-        {text: "프론트엔드 스터디에 초대 되었습니다", id: 1},
-        {text: "프론트엔드 스터디에 초대 되었습니다", id: 2},
-        {text: "프론트엔드 스터디에 초대 되었습니다", id: 3},
+        {type: "요청함", text: "swon3210님이 초대를 승낙하셨습니다", id: 0},
+        {type: "요청받음", text: "프론트엔드 스터디에 초대 되었습니다", id: 1},
+        {type: "요청받음", text: "프론트엔드 스터디에 초대 되었습니다", id: 2},
+        {type: "요청받음", text: "프론트엔드 스터디에 초대 되었습니다", id: 3},
+        {type: "요청받음", text: "프론트엔드 스터디에 초대 되었습니다", id: 4},
+        {type: "요청받음", text: "프론트엔드 스터디에 초대 되었습니다", id: 5},
+        {type: "요청받음", text: "프론트엔드 스터디에 초대 되었습니다", id: 6},
       ]
     }
   },
   computed: {
-    ...mapGetters({
-      toggle: "layout/dropdownShow"
+    ...mapState('layout', {
+      toggle: state => state.dropdownShow
     })
   },
   components: {
@@ -137,8 +143,6 @@ export default {
 }
 
 .dropdown {
-  display: flex;
-  flex-flow: column;
   height: 40%;
   width: 200px;
   background-color: white;
@@ -147,9 +151,6 @@ export default {
   top: 40px;
   right: 50px;
 
-  .dropdown-list {
-    color: black;
-  }
   @include container-scrollbar-none;
   @include right-and-left-shadow;
 }

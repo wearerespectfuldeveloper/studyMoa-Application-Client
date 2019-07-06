@@ -1,7 +1,7 @@
 <template>
-  <div class="sidebar full-height">
+  <div class="sidebar">
     <ul v-for="content in sidebarContent" :key="content.title">
-      <span class="disappear-head">{{content.title}}</span>
+      <span class="disappear">{{content.title}}</span>
       <li v-for="sub in content.subs" :key="sub">
         <a href="#"><i :class="'fas fa-' + sub.icon"></i><span class="disappear">{{sub.title}}</span></a>
       </li>
@@ -20,15 +20,15 @@ export default {
           icon: "user-edit",
           id: 0,
           subs: [
-            {title: '카테고리 1', icon: "user-edit"},
-            {title: '카테고리 2', icon: "user-edit"},
-            {title: '카테고리 3', icon: "user-edit"}
+            {id: 0, title: '카테고리 1', icon: "user-edit"},
+            {id: 1, title: '카테고리 2', icon: "user-edit"},
+            {id: 2, title: '카테고리 3', icon: "user-edit"}
           ]
         },
         {
           title: '자유게시판',
           icon: "user-edit",
-          id: 0,
+          id: 1,
           subs: [
             {title: '스터디 구해요', icon: "user-edit"},
             {title: '잡담', icon: "user-edit"}
@@ -55,10 +55,11 @@ export default {
 
 ul {
   padding: 10px;
+  display: flex;
+  flex-flow: column;
   color: rgb(82, 82, 82);
   font-weight: 600;
   margin-top: 20px;
-  margin-left: 10px;  
 
   .disappear {
     padding: 10px;
@@ -71,7 +72,7 @@ ul {
       color: rgb(82, 82, 82);
       i {
         color: $navbarColor;
-        margin-left: 10px;
+        
       }
     }
     

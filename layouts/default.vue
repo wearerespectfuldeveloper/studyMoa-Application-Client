@@ -1,6 +1,7 @@
 <template>
-  <div id="grid">
 
+  <div id="grid">
+    
     <div class="brand" :class="{'side-min-on': !toggle, 'side-min-off': toggle}">
       <a href="#" @click="test">WARD</a>
     </div>
@@ -8,7 +9,6 @@
     <header :class="{'main-min-on': !toggle, 'main-min-off': toggle}">
       <Nav />
     </header>
-
     
     <aside :class="{'side-min-on': !toggle, 'side-min-off': toggle}">
       <Sidebar />
@@ -17,8 +17,7 @@
     <content :class="{'main-min-on': !toggle, 'main-min-off': toggle}">
       <nuxt />
     </content>
-    
-    
+
   </div>
 </template>
 
@@ -27,7 +26,7 @@ import Nav from '@/components/layout/navbar';
 import Sidebar from '@/components/layout/sidebar';
 import Footer from '@/components/layout/footer';
 
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   data () {
@@ -36,8 +35,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      toggle: 'layout/sidebarMinimize'
+    ...mapState('layout', {
+      toggle: state => state.sidebarMinimize
     })
   },
   components: {

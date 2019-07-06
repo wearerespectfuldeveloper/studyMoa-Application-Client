@@ -1,20 +1,59 @@
 <template>
-  <div class="container full-height flex">
-    <div class="category">
-
+  <div class="page-container full-height flex">
+    <!-- 카테고리 버튼 -->
+    <div class="arrange full-width">
+      <Dropdown />
     </div>
+
+    <!-- 스터디 그룹 블록들 -->
     <div class="blocks full-width">
-      <Block 
+      <Block
         v-for="block in blocks" :key="block.id"
-        :title = block.title
-        :desc = block.desc
-      />
+      >
+        <!-- 섬네일 영역 컴포넌트-->
+        <div slot="thumnail" class="thumnail">
+          <component :is="'StudyGroupThumnail'"></component>
+        </div>
+
+        <!-- 텍스트 영역 컴포넌트-->
+        <div slot="text" class="text">
+          <component 
+            :is="'StudyGroupDesc'"
+            :title = block.title
+          ></component>
+        </div>
+
+        <!-- 버튼 영역 컴포넌트-->
+        <div slot="buttons" class="buttons">
+          <component :is="'Modal'"
+            :width = "'60%'"
+            :height = "'80%'"
+          >
+            <component 
+              :is="'StudyIntro'"
+              class="modal-body-content"
+              slot="content1"
+            ></component>
+            <component 
+              :is="'StudyMember'" 
+              class="modal-body-content"
+              slot="content2"
+              :members = "members"
+            ></component>
+            <component 
+              :is="'StudyProgress'"
+              class="modal-body-content"
+              slot="content3"
+            ></component>
+          </component>
+        </div>
+
+      </Block>
     </div>
   </div>
 </template>
 
 <script>
-import Block from '@/components/pageContent/block';
 
 export default {
   data () {
@@ -26,31 +65,80 @@ export default {
         {title: '블록4', desc: 'Hellow World!', id: 3 },
         {title: '블록5', desc: 'Hellow World!', id: 4 },
         {title: '블록6', desc: 'Hellow World!', id: 5 }
+      ],
+      members: [
+        {name: 'person1', role: '프론트엔드', id: 0 },
+        {name: 'person2', role: '백엔드', id: 1 }
       ]
     }
   },
   components: {
-    Block
+    // 유기체 컴포넌트 import
+    Block: () => import('@/components/pageContent/block/block'),
+    Dropdown: () => import('@/components/pageContent/dropdown/dropdown'),
+    Modal: () => import('@/components/pageContent/modal/modal'),
+
+    // 분자 컴포넌트 import
+    // 블록
+    StudyGroupThumnail: () => import('@/components/pageContent/studyGroupThumnail'),
+    StudyGroupDesc: () => import('@/components/pageContent/studyGroupDesc'),
+    // 모달
+    StudyIntro: () => import('@/components/pageContent/studyIntro'),
+    StudyMember: () => import('@/components/pageContent/studyMember'),
+    StudyProgress: () => import('@/components/pageContent/studyProgress')
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.container {
-  @include container-scroll-y
-}
-
-.flex {
+// 전체 페이지 컨테이너(wrapper)
+.page-container {
+  @include container-scroll-y;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-flow: column;
 }
 
+// 정렬 버튼 영역
+.arrange {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 10%;
+  width: 80%;
+}
+
+// 블록 영역
 .blocks {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-flow: column;
+  width: 100%;
+  
+  // 하나의 블록 안에서의 thumnail 컴포넌트
+  .thumnail {
+    width: 20%;
+    @media screen and (max-width: 960px) {
+      min-width: 30%;
+    }
+  }
+
+  // 하나의 블록 안에서의 text 컴포넌트
+  .text {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+  }
+  // 하나의 블록 안에서 buttons 컴포넌트
+  .buttons {
+
+    
+  }
+
+  
 }
 </style>

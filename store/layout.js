@@ -4,12 +4,7 @@ export const state = () => ({
 })
 
 export const getters = {
-  sidebarMinimize (state) {
-    return state.sidebarMinimize;
-  },
-  dropdownShow (state) {
-    return state.dropdownShow;
-  }
+  
 }
 
 export const mutations = {

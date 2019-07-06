@@ -1,3 +1,8 @@
+/*
+이곳은 스타일링을 모듈화한 공간입니다. 여기서 재사용성이 높은 CSS 속성들을 정의하고 이를 모듈처럼 다른 컴포넌트나 원자 요소에 붙여넣도록 합니다. 같은 모듈을 공유하고 있다면 이 mixin들을 변경하여 일률적으로 디자인을 바꿀 수 있습니다.
+*/
+
+
 // 테두리
 @mixin thin-border-bottom {
   border-bottom: 0.3px solid rgba(0,0,0,0.5);
@@ -5,39 +10,6 @@
 
 @mixin thin-border-right {
   border-right: 0.3px solid rgba(0,0,0,0.5);
-}
-
-
-
-// 링크 리스트 텍스트
-@mixin anchor-list-light {
-  li {
-    list-style-type: none;
-    color: white;
-    a {
-      text-decoration: none;
-      color: white;
-      font-weight: 800;
-      &:hover {
-        color: #e0f4fd;
-      }
-    }
-  }
-}
-
-@mixin anchor-list-dark {
-  li {
-    list-style-type: none;
-    color: #303030;
-    a {
-      text-decoration: none;
-      color: #303030;
-      font-weight: 800;
-      &:hover {
-        color: #7e7e7e;
-      }
-    }
-  }
 }
 
 // 그림자
@@ -71,7 +43,6 @@
 }
 
 // 그리드 비율 - 데스크탑
-
 @mixin sideMinOnGrid {
   display: none;
 }
@@ -89,7 +60,6 @@
 }
 
 // 그리드 비율 - 모바일
-
 @mixin mobileSideMinOnGrid {
   display: none;
 }
@@ -106,19 +76,4 @@
   grid-column: 2 / 17;
 }
 
-// 애니메이션
 
-@mixin hover-color-effect($color) {
-  transition: background-color 0.5s;
-  &:hover {
-    background-color: $color;
-  }
-}
-
-// 플렉스 컨테이너
-
-@mixin container-fleximize {
-
-}
-
-// 그리드 컨테이너

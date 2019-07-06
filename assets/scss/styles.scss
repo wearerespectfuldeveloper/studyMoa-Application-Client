@@ -1,3 +1,17 @@
+/* 
+
+이곳은 import를 하지 않아도 어떤 컴포넌트에서도 해당 scss 파일의 내용을 사용할 수 있도록 scss 파일들을 전역으로 등록하는 곳입니다. 이곳에 등록되지 않은 scss 파일은 개별 컴포넌트에서 사용하고 싶을 시
+
+@import '경로';
+
+를 스타일 태그 안에 붙여넣어야 합니다.
+
+*/
+
+
 @import 'variables.scss';
 @import 'mixins.scss';
-@import 'grid.scss';
+@import 'animations.scss';
+@import 'classes.scss';
+@import 'atoms.scss';
+

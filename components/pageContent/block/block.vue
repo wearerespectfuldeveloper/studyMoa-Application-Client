@@ -1,13 +1,22 @@
 <template>
   <div class="block-container">
-    <div class="block-content">
-      <div class="category-thumnail"></div>
-      <h4><b>{{title}}</b></h4> 
+
+    <slot name="thumnail"></slot>
+
+    <div class="column">
+
+      <slot name="text"></slot>
+
+      <slot name="buttons"></slot>
+
     </div>
+    
   </div>
 </template>
 
 <script>
+
+
 export default {
   props: {
     title: {
@@ -18,6 +27,8 @@ export default {
       type: String,
       default: ''
     }
+  },
+  components: {
   }
 }
 </script>
@@ -25,30 +36,26 @@ export default {
 <style lang="scss" scoped>
 
 .block-container {
+  cursor: pointer;
+  display: flex;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
   background-color: white;
-  padding: 10px;
   margin-bottom: 20px;
   width: 80%;
+  height: 100%;
   transition: 0.3s;
-  border-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left: 10px solid $blockCategoryColor;
   &:hover {
     box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   }
 }
 
-.block-content {
-  padding: 2px 16px;
+.column {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  h4 {
-  }
-
-  p {
-  }
-
+  flex-flow: column;
 }
+
 
 </style>

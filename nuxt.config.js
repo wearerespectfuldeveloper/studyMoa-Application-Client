@@ -54,7 +54,6 @@ export default {
   */
   build: {
     vendor: [
-      'bootstrap'
     ],
     /*
     ** You can extend webpack config here
