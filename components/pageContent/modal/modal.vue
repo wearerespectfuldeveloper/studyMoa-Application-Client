@@ -22,7 +22,7 @@ API
 <template>
   <div>
     <!-- 버튼 부분 -->
-    <div class="block-buttons">
+    <div class="block-buttons" v-if="showButton">
       <a href="#open-modal" class="modal-button">상세보기</a>
     </div>
 
@@ -72,6 +72,10 @@ export default {
     height: {
       type: String,
       default: "60%"
+    },
+    showButton: {
+      type: Boolean,
+      default: true
     }
   },
   components: {

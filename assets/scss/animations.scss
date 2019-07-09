@@ -11,6 +11,12 @@
   }
 }
 
+@mixin background-color-transition($hoverColor) {
+  transition: background-color 0.5s;
+  &:hover {
+    background-color: $hoverColor;
+  }
+}
 
 
 // 애니메이션

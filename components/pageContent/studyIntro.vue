@@ -30,16 +30,16 @@ export default {
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
-  align-items: center;
   margin-bottom: 20px;
   margin-top: 20px;
+  width: 90%;
 
   .meta {
     display: flex;
+    flex-flow: row;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid grey;
-    width: 90%;
     .row {
       display: flex;
       align-items: center;
@@ -64,7 +64,6 @@ export default {
   }
 
   .text {
-    width: 90%;
     padding-top: 20px;
     font-size: 14px;
   }

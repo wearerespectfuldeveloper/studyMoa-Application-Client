@@ -1,15 +1,24 @@
+<!--
+
+API
+ - width: 문자열로 픽셀값이나 퍼센트 값을 넘겨받으면 해당 너비만큼 블록의 너비가 결정됩니다.
+ - clickEvent: clickEvent Prop을 통해 함수를 넘겨받으면, 이 블록이 클릭될 때마다 그 함수를 실행합니다.
+
+-->
+
+
 <template>
-  <div class="block-container">
+  <div class="block-container"
+    @click="clickEvent"
+    :style="{'width': width, 'height': height}"
+  >
 
-    <slot name="thumnail"></slot>
+    <slot name="left-sector"></slot>
 
-    <div class="column">
+    <slot name="center-sector"></slot>
 
-      <slot name="text"></slot>
+    <slot name="right-sector"></slot>
 
-      <slot name="buttons"></slot>
-
-    </div>
     
   </div>
 </template>
@@ -19,13 +28,19 @@
 
 export default {
   props: {
-    title: {
+    width: {
       type: String,
-      default: ''
+      default: 'auto'
     },
-    desc: {
+    height: {
       type: String,
-      default: ''
+      default: 'auto'
+    },
+    clickEvent: {
+      type: Function,
+      defalt () {
+        console.log('nothing happened')
+      }
     }
   },
   components: {
@@ -41,7 +56,6 @@ export default {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
   background-color: white;
   margin-bottom: 20px;
-  width: 80%;
   height: 100%;
   transition: 0.3s;
   border-top-right-radius: 5px;
@@ -50,11 +64,6 @@ export default {
   &:hover {
     box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   }
-}
-
-.column {
-  display: flex;
-  flex-flow: column;
 }
 
 

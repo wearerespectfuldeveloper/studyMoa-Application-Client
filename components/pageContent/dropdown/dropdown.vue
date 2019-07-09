@@ -21,7 +21,6 @@ export default {
 
 <style lang="scss" scoped>
   select {
-    width: 100px;
     border: 0.5px solid grey;
     color: $darkText;
     padding: 5px 5px 10px 5px;

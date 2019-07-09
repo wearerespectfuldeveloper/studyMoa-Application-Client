@@ -1,7 +1,7 @@
 <template>
   <div class="modal-header-container">
     <h4 class="modal-title">Studymoa</h4>
-    <a href="#modal-close" title="Close" class="modal-close">Close</a>
+    <a href="#" title="Close" class="modal-close">Close</a>
   </div>
 </template>
 
