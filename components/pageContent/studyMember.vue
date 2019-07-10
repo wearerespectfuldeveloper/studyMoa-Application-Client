@@ -1,17 +1,15 @@
 <template>
   <div class="study-member-container">
-    <div class="meta">
-      <h3 class="title">스터디 멤버</h3>
-      <div class="study-host">
-        <span class="study-host-name">스터디 장 : someone</span>
-        <a href="#" class="study-host-button">프로필 보기</a>
-      </div>
-    </div>
+    <component :is="'ContentHeader'"
+      :title = "headerTitle"
+      :subTitle = "headerSubTitle"
+      :buttonText = "headerButtonText"
+    ></component>
     <div class="blocks">
       <div
         class="member-block"
         v-for = "member in members" 
-        :key = member.id
+        :key = "member.id"
       > 
         <img class="user-avatar" src="@/assets/img/avatar.png" alt="">
         <h5>{{member.name}}</h5>
@@ -23,15 +21,20 @@
 </template>
 
 <script>
+import { molecule, withContentHeader} from '@/assets/vueMixins/localMixins'
+
 export default {
+  mixins: [molecule, withContentHeader],
   props: {
     members: {
       type: Array,
-      default: []
+      default: () => []
     }
   },
+  components: {
+    ContentHeader: () => import('@/components/pageContent/contentHeader')
+  },
   mounted () {
-    console.log(this.members);
   }
 }
 </script>

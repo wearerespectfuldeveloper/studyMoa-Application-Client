@@ -1,23 +1,18 @@
 <template>
-  <div class="main-content">
-    <h1>테스트</h1>
-    <slot></slot>
+  <div>
+    <slot name="header"></slot>
+    <slot name="content"></slot>
   </div>
 </template>
 
 <script>
+import { organism } from '@/assets/vueMixins/localMixins'
+
 export default {
-  
+  mixins: [organism]
 }
 </script>
 
 <style lang="scss" scoped>
-.main-content {
-  grid-column: 4 / 17;
-  grid-row: 1 / 17;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  @include container-scroll-y;
-}
+
 </style>

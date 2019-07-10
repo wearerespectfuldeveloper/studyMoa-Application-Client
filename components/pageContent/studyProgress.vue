@@ -1,8 +1,10 @@
 <template>
   <div class="studyProgress-container">
-    <div class="meta">
-      <h3 class="title">스터디 진행기록</h3>
-    </div>
+    <component :is="'ContentHeader'"
+      :title = "headerTitle"
+      :subtitle = "headerSubTitle"
+      :buttonText = "headerButtonText"
+    ></component>
     <div class="blocks">
       <Block 
         v-for="progress in progresses" 
@@ -25,17 +27,23 @@
 </template>
 
 <script>
+import { molecule, withContentHeader } from '@/assets/vueMixins/localMixins'
+
 export default {
+  mixins: [molecule, withContentHeader],
+  props: {
+    progresses: {
+      type: Array,
+      default: () => []
+    }
+  },
   data () {
     return {
-      progresses: [
-        {id: 0, week: '1주차', done: '자기 소개 및 역할 분담', host: '피카츄', date: '2019.05.15', time: '10:56AM'},
-        {id: 1, week: '2주차', done: '사전 자료 조사', host: '피카츄', date: '2019.05.15', time: '10:56AM'},
-        {id: 2, week: '3주차', done: '기획 설계', host: '라이츄', date: '2019.05.15', time: '10:56AM'} 
-      ]
+      
     }
   },
   components: {
+    ContentHeader: () => import('@/components/pageContent/contentHeader'),
     Block: () => import('@/components/pageContent/block/block')
   }
 }

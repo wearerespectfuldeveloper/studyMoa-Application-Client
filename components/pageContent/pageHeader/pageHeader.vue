@@ -1,5 +1,4 @@
 
-
 <template>
   <div class="meta" :style="{'width': width, 'height': height}">
     <div class="row">
@@ -15,7 +14,10 @@
 </template>
 
 <script>
+import { organism } from '@/assets/vueMixins/localMixins'
+
 export default {
+  mixins: [organism],
   props: {
     title: {
       type: String,
@@ -26,14 +28,6 @@ export default {
       default: ''
     },
     buttonText: {
-      type: String,
-      default: ''
-    },
-    width: {
-      type: String,
-      default: ''
-    },
-    height: {
       type: String,
       default: ''
     }

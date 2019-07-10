@@ -5,8 +5,10 @@
 </template>
 
 <script>
+import { molecule } from '@/assets/vueMixins/localMixins'
+
 export default {
-  
+  mixins: [molecule]
 }
 </script>
 

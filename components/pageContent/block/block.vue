@@ -9,7 +9,6 @@ API
 
 <template>
   <div class="block-container"
-    @click="clickEvent"
     :style="{'width': width, 'height': height}"
   >
 
@@ -38,9 +37,8 @@ export default {
     },
     clickEvent: {
       type: Function,
-      defalt () {
-        console.log('nothing happened')
-      }
+      defalt: () => console.log('nothing happened')
+      
     }
   },
   components: {

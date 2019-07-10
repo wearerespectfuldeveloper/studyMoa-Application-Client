@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="meta" :style="{'width': width, 'height': height}">
     <div class="row">
@@ -13,7 +11,10 @@
 </template>
 
 <script>
+import { molecule } from '@/assets/vueMixins/localMixins'
+
 export default {
+  mixins: [molecule],
   props: {
     title: {
       type: String,
@@ -27,14 +28,6 @@ export default {
       type: String,
       default: ''
     },
-    width: {
-      type: String,
-      default: ''
-    },
-    height: {
-      type: String,
-      default: ''
-    }
   }
 }
 </script>

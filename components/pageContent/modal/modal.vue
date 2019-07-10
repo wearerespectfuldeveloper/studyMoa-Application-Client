@@ -62,8 +62,10 @@ API
 </template>
 
 <script>
+import { organism } from '@/assets/vueMixins/localMixins'
 
 export default {
+  mixins: [organism],
   props: {
     width: {
       type: String,

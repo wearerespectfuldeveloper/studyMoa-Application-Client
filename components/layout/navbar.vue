@@ -24,7 +24,7 @@
           </ul>
         </div>
         
-        <nuxt-link to="studyGroup/studyGroupInfo" class="nav-button">
+        <nuxt-link to="/studyGroup/studyGroupInfo" class="nav-button">
           <i class="fas fa-sign-in-alt"></i>로그인
         </nuxt-link>
       </div>

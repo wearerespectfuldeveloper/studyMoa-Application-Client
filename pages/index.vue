@@ -22,7 +22,7 @@
         <div slot="center-sector" class="text">
           <component 
             :is="'StudyGroupDesc'"
-            :title = block.title
+            :title = "block.title"
           ></component>
         </div>
       </component>
