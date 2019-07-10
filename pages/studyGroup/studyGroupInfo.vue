@@ -58,6 +58,9 @@ export default {
             width: '',
             height: '',
           },
+          class: {
+
+          },
           slots: [
             {slotName: 'list', component: 'sidebarList', props: {
               title: '',
@@ -84,13 +87,13 @@ export default {
             height: '',
           },
           slots: [
-            {slotName: 'content', component: 'DropDown', props: {
+            {slotName: 'content', component: 'StudyIntro', props: {
               
             }},
-            {slotName: 'content', component: '', props: {
+            {slotName: 'content', component: 'StudyMember', props: {
               
             }},
-            {slotName: 'content', component: 'Block', props: {
+            {slotName: 'content', component: 'StudyProgress', props: {
               
             }}
           ]
@@ -99,24 +102,30 @@ export default {
     }
   },
   render(createElement) {
+
+    let organisms = [];
+
+    
+
+    this.template.map(x => createElement(x.name, {
+      props: x.props
+    }))
+
     return createElement('div',  
-    {
-      class: "study-group-page"
-    },
-    [
-      createElement(this.template),
-      createElement()
-    ]
+      {
+        class: "study-group-page"
+      },
+      organisms
     );
   },
   components: {
     // 유기체 컴포넌트
     SubSidebar: () => import('@/components/pageContent/subSidebar/subSidebar'),
-    VerticalBlock () {
-      return import('@/components/pageContent/verticalBlock/verticalBlock')
-    },
+    VerticalBlock: () => import('@/components/pageContent/verticalBlock/verticalBlock'),
+    PageHeader: () => import('@/components/pageContent/pageHeader/pageHeader'),
     // 분자 컴포넌트
-    ContentHeader: () => import('@/components/pageContent/contentHeader/contentHeader'),
+    
+    ContentHeader : () => import('@/components/pageContent/contentHeader'),
     StudyIntro: () => import('@/components/pageContent/studyIntro'),
     StudyMember: () => import('@/components/pageContent/studyMember'),
     StudyProgress: () => import('@/components/pageContent/studyProgress'),
