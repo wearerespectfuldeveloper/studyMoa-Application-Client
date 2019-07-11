@@ -57,18 +57,6 @@ export default {
   width: 90%;
   margin-bottom: 20px;
 
-  .meta {
-    display: flex;
-    flex-flow: row;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid grey;
-    margin-bottom: 20px;
-    .title {
-      padding: 10px 0 10px 0;
-    }
-  }
-
   .blocks {
     display: flex;
     flex-flow: column;

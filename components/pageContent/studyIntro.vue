@@ -8,7 +8,7 @@
     >
     </component>
     <p class="text">
-      우리에 갇힌 다람쥐가 자유롭게 뛰놀지 못하고 우리 속의 쳇바퀴만을 돌리는 것을 비유하여 사람이 단조롭고 같은 일을 매일같이 하여 생활의 변화가 없을 때 하는 말.
+      {{mainText}}
     </p>
   </div>
   
@@ -19,6 +19,12 @@ import { molecule, withContentHeader } from '@/assets/vueMixins/localMixins'
 
 export default {
   mixins: [molecule, withContentHeader],
+  props: {
+    mainText: {
+      type: String,
+      default: ''
+    }
+  },
   components: {
     ContentHeader: () => import('@/components/pageContent/contentHeader')
   }
