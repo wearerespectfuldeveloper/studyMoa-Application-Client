@@ -82,19 +82,6 @@ export default {
     })
   },
   components: {
-    // 유기체 컴포넌트 import
-    Block: () => import('@/components/pageContent/block/block'),
-    Dropdown: () => import('@/components/pageContent/dropdown/dropdown'),
-    Modal: () => import('@/components/pageContent/modal/modal'),
-
-    // 분자 컴포넌트 import
-    // 블록
-    StudyGroupThumnail: () => import('@/components/pageContent/studyGroupThumnail'),
-    StudyGroupDesc: () => import('@/components/pageContent/studyGroupDesc'),
-    // 모달
-    StudyIntro: () => import('@/components/pageContent/studyIntro'),
-    StudyMember: () => import('@/components/pageContent/studyMember'),
-    StudyProgress: () => import('@/components/pageContent/studyProgress')
   },
   methods: {
     openModal () {

@@ -23,16 +23,6 @@
 -->
 
 <script>
-// 유기체 컴포넌트
-import VerticalBlock from '@/components/pageContent/verticalBlock/verticalBlock';
-import SubSidebar from '@/components/pageContent/subSidebar/subSidebar';
-
-// 초기 분자 컴포넌트(비동기로 해야함, 여기 지우고)
-import PageHeader from '@/components/pageContent/pageHeader/pageHeader';
-import StudyIntro from '@/components/pageContent/studyIntro';
-import StudyMember from '@/components/pageContent/studyMember';
-import StudyProgress from '@/components/pageContent/studyProgress';
-import Dropdown from '@/components/pageContent/dropdown/dropdown';
 
 export default {
   data () {
