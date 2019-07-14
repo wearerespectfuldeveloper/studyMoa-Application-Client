@@ -5,10 +5,18 @@ export const molecule = {
       type: String,
       default: ''
     },
+    minWidth: {
+      type: String,
+      default: ''
+    },
     height: {
       type: String,
       default: ''
-    }
+    },
+    minHeight: {
+      type: String,
+      default: ''
+    },
   }
 }
 

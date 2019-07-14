@@ -6,7 +6,7 @@
       :buttonText = "headerButtonText"
     ></component>
     <div class="blocks">
-      <Block 
+      <Block
         v-for="progress in progresses" 
         :key="progress.id"
         :width="'100%'"
@@ -43,8 +43,6 @@ export default {
     }
   },
   components: {
-    ContentHeader: () => import('@/components/pageContent/contentHeader'),
-    Block: () => import('@/components/pageContent/block/block')
   }
 }
 </script>

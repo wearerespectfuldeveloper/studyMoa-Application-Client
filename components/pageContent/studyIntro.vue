@@ -26,7 +26,6 @@ export default {
     }
   },
   components: {
-    ContentHeader: () => import('@/components/pageContent/contentHeader')
   }
 }
 </script>

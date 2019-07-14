@@ -1,11 +1,9 @@
+<!--
 <template>
-  <div class="page-container full-height flex">
-    <!-- 카테고리 버튼 -->
     <div class="arrange full-width">
       <Dropdown />
     </div>
     
-    <!-- 스터디 그룹 블록들 -->
     <div class="blocks full-width">
       <component :is="'Block'"
         v-for="block in blocks" :key="block.id"
@@ -13,12 +11,10 @@
         :width="'80%'"
         :height="'140px'"
       >
-        <!-- 왼쪽 영역 컴포넌트-->
         <div slot="left-sector" class="thumnail">
           <component :is="'StudyGroupThumnail'"></component>
         </div>
 
-        <!-- 중간 영역 컴포넌트-->
         <div slot="center-sector" class="text">
           <component 
             :is="'StudyGroupDesc'"
@@ -28,78 +24,101 @@
       </component>
     </div>
 
-    <!-- 모달 위치(장소는 상관없음. 어차피 안 보임) -->
-
     <component :is="'Modal'"
       :width = "'60%'"
       :height = "'80%'"
       :showButton = "false"
     >
-      <component 
-        :is="'StudyIntro'"
-        class="modal-body-content"
-        slot="content1"
-      ></component>
-      <component 
-        :is="'StudyMember'" 
-        class="modal-body-content"
-        slot="content2"
-        :members = "members"
-      ></component>
-      <component 
-        :is="'StudyProgress'"
-        class="modal-body-content"
-        slot="content3"
-      ></component>
+      
     </component>
 
   </div>
 </template>
+-->
 
 <script>
-import { mapState } from 'vuex';
 
 export default {
   data () {
     return {
-      blocks: [
-        {title: '블록1', desc: 'Hellow World!', id: 0 },
-        {title: '블록2', desc: 'Hellow World!', id: 1 },
-        {title: '블록3', desc: 'Hellow World!', id: 2 },
-        {title: '블록4', desc: 'Hellow World!', id: 3 },
-        {title: '블록5', desc: 'Hellow World!', id: 4 },
-        {title: '블록6', desc: 'Hellow World!', id: 5 }
+      // template은 비동기로 가져올 예정
+      template: [
+        {
+          name: 'PageHeader',
+          props: {
+
+          },
+          class: {
+            'page-header': true
+          },
+          slots: [
+            {slotName: 'dropdown', component: 'Dropdown', props: {
+              width: '90%',
+              categories: [
+                {
+                  name: '카테고리1',
+                  value: 1
+                },
+                {
+                  name: '카테고리2',
+                  value: 2
+                }
+              ]
+            }}
+          ]
+        },
+        {
+          name: 'PageContent',
+          props: {
+            
+          },
+          class: {
+            'page-content': true
+          },
+          slots: [
+            {slotName: 'top', component: 'ThumnailBlocks', props: {
+              width: '90%',
+              minBlockHeight: '150px',
+              isHorizontal: false,
+              thumnailSectorSize: '20%',
+              thumnailSectorMinSize: '200px',
+              textSectorSize: '80%',
+              clickEvent: function openModal () {
+                location.href = "#open-modal";
+              },
+              blocks: [
+                {title: '블록1', text: 'Hellow World!', id: 0 },
+                {title: '블록2', text: 'Hellow World!', id: 1 },
+                {title: '블록3', text: 'Hellow World!', id: 2 },
+                {title: '블록4', text: 'Hellow World!', id: 3 },
+                {title: '블록5', text: 'Hellow World!', id: 4 },
+                {title: '블록6', text: 'Hellow World!', id: 5 }
+              ],
+            }}
+          ]
+        }
       ],
+      
       members: [
         {name: 'person1', role: '프론트엔드', id: 0 },
         {name: 'person2', role: '백엔드', id: 1 }
       ]
     }
   },
-  computed: {
-    ...mapState('inquire', {
-      test: state => state.test
-    })
+  render(createElement) {
+    
+    return this.$templateLoad(createElement, this.template);
+  },
+  mounted() {
   },
   components: {
-    // 유기체 컴포넌트 import
-    Block: () => import('@/components/pageContent/block/block'),
-    Dropdown: () => import('@/components/pageContent/dropdown/dropdown'),
-    Modal: () => import('@/components/pageContent/modal/modal'),
-
-    // 분자 컴포넌트 import
-    // 블록
-    StudyGroupThumnail: () => import('@/components/pageContent/studyGroupThumnail'),
-    StudyGroupDesc: () => import('@/components/pageContent/studyGroupDesc'),
-    // 모달
-    StudyIntro: () => import('@/components/pageContent/studyIntro'),
-    StudyMember: () => import('@/components/pageContent/studyMember'),
-    StudyProgress: () => import('@/components/pageContent/studyProgress')
+  }, 
+  computed: {
+  },
+  components: {
   },
   methods: {
-    openModal () {
-      location.href = "#open-modal";
-    }
+    
   }
 }
 </script>
@@ -112,41 +131,26 @@ export default {
   justify-content: flex-start;
   align-items: center;
   flex-flow: column;
+  height: 100%;
 }
 
 // 정렬 버튼 영역
-.arrange {
+.page-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
-  height: 10%;
-  width: 80%;
+  width: 100%;
 }
 
 // 블록 영역
-.blocks {
+.page-content {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   flex-flow: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
-  
-  // 하나의 블록 안에서의 thumnail 컴포넌트
-  .thumnail {
-    width: 20%;
-    @media screen and (max-width: 960px) {
-      min-width: 30%;
-    }
-  }
-
-  // 하나의 블록 안에서의 text 컴포넌트
-  .text {
-    width: 70%;
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-start;
-  }
 }
 </style>

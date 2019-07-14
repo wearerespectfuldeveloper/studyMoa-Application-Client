@@ -23,16 +23,6 @@
 -->
 
 <script>
-// 유기체 컴포넌트
-import VerticalBlock from '@/components/pageContent/verticalBlock/verticalBlock';
-import SubSidebar from '@/components/pageContent/subSidebar/subSidebar';
-
-// 초기 분자 컴포넌트(비동기로 해야함, 여기 지우고)
-import PageHeader from '@/components/pageContent/pageHeader/pageHeader';
-import StudyIntro from '@/components/pageContent/studyIntro';
-import StudyMember from '@/components/pageContent/studyMember';
-import StudyProgress from '@/components/pageContent/studyProgress';
-import Dropdown from '@/components/pageContent/dropdown/dropdown';
 
 export default {
   data () {
@@ -143,18 +133,6 @@ export default {
   mounted() {
   },
   components: {
-    // 유기체 컴포넌트
-    SubSidebar: () => import('@/components/pageContent/subSidebar/subSidebar'),
-    VerticalBlock: () => import('@/components/pageContent/verticalBlock/verticalBlock'),
-    PageHeader: () => import('@/components/pageContent/pageHeader/pageHeader'),
-    Dropdown: () => import('@/components/pageContent/dropdown/dropdown'),
-    
-    // 분자 컴포넌트
-    ContentHeader : () => import('@/components/pageContent/contentHeader'),
-    StudyIntro: () => import('@/components/pageContent/studyIntro'),
-    StudyMember: () => import('@/components/pageContent/studyMember'),
-    StudyProgress: () => import('@/components/pageContent/studyProgress'),
-    SidebarList: () => import('@/components/pageContent/sidebarList'),
   } 
 }
 </script>

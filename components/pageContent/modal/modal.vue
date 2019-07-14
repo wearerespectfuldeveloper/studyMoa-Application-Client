@@ -32,11 +32,6 @@ API
         class="modal-dialog" 
         :style="{'width': width, 'height': height}">
 
-        <!--모달 헤더-->
-        <component :is="'ModalHeader'"
-          class="modal-header"
-        ></component>
-        
         <!--모달 바디-->
         <div class="modal-body">
           <slot name="content1"></slot>
@@ -49,10 +44,6 @@ API
 
           <slot name="content5"></slot>
         </div>
-
-        <component :is="'ModalFooter'"
-          class="modal-footer"
-        ></component>
 
         <!--모달 푸터-->
       </div>
@@ -80,11 +71,7 @@ export default {
       default: true
     }
   },
-  components: {
-    // 구성요소 import
-    ModalHeader: () => import('@/components/pageContent/modal/modalHeader'),
-    ModalFooter: () => import('@/components/pageContent/modal/modalFooter'),
-    
+  components: {    
   }
 }
 </script>
