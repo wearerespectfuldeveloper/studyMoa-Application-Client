@@ -63,5 +63,9 @@ export default {
     }
   },
   env: {
+  },
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
   }
 }

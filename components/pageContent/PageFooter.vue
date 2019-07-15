@@ -1,27 +1,31 @@
 <template>
-  <div class="modal-footer-container">
-    <a href="#" class="modal-footer-left-button">이전</a>
-    <a href="#" class="modal-footer-right-button">다음</a>
+  <div 
+    class="page-footer-container"
+    :style="{'width': width, 'height': height}"
+  >
+    <a href="#" class="page-footer-left-button">이전</a>
+    <a href="#" class="page-footer-right-button">다음</a>
   </div>
 </template>
 
 <script>
+import { molecule } from '@/assets/vueMixins/localMixins'
 export default {
-  
+  mixins: [molecule]
 }
 </script>
 
 <style lang="scss" scoped>
-.modal-footer-container {
+.page-footer-container {
   display: flex;
   justify-content: space-between;
-  .modal-footer-left-button {
+  .page-footer-left-button {
     @include text-anchor-button($modalFooterRightButtonColor);
     @include button-color-transition(none, $modalFooterHoverButtonColor);
     padding: 10px;
   }
 
-  .modal-footer-right-button {
+  .page-footer-right-button {
     @include text-anchor-button($modalFooterLeftButtonColor);
     @include button-color-transition(none, $modalFooterHoverButtonColor);
     padding: 10px;

@@ -33,17 +33,15 @@ API
         :style="{'width': width, 'height': height}">
 
         <!--모달 바디-->
+        <slot name="header"></slot>
+
         <div class="modal-body">
-          <slot name="content1"></slot>
 
-          <slot name="content2"></slot>
-
-          <slot name="content3"></slot>
-
-          <slot name="content4"></slot>
-
-          <slot name="content5"></slot>
+          <slot name="body"></slot>
+        
         </div>
+
+        <slot name="footer"></slot>
 
         <!--모달 푸터-->
       </div>
@@ -71,7 +69,7 @@ export default {
       default: true
     }
   },
-  components: {    
+  components: {
   }
 }
 </script>
@@ -122,24 +120,13 @@ export default {
     background: white;
     color: #444;
 
-    .modal-header {
-      width: 100%;
-      height: 10%;
-    }
-
     .modal-body {
+      @include container-scroll-y;
       display: flex;
       flex-flow: column;
       align-items: center;
       width: 100%;
       height: 80%;
-      @include container-scroll-y;
-
-    }
-
-    .modal-footer {
-      width: 90%;
-      height: 10%;
     }
   }
 }

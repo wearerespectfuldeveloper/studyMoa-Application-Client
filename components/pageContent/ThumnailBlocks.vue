@@ -12,6 +12,7 @@ API
     class = "thumnail-blocks-container"
   >
     <div v-for = "block in blocks" :key = "block.id" class="thumnail-block"
+      @click="clickEvent"
       :style="{'height': blockHeight, 'width': blockWidth}"
       :class="{'horizontal': isHorizontal, 'vertical': !isHorizontal}"
     >

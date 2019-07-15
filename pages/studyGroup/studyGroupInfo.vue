@@ -1,4 +1,3 @@
-
 <script>
 
 export default {
@@ -43,18 +42,40 @@ export default {
           width: '90%',
           blockWidth: '100%',
           blocks: [
-            {id: 0, title: '1주차', subTitle: '자기 소개 및 역할 분담', section1: '피카츄', section2: '2019.05.15', time: '10:56AM'},
-            {id: 1, title: '2주차', subTitle: '사전 자료 조사', section1: '피카츄', section2: '2019.05.15', time: '10:56AM'},
-            {id: 2, title: '3주차', subTitle: '기획 설계', section1: '라이츄', section2: '2019.05.15', time: '10:56AM'} 
+            {id: 0, title: '1주차', subTitle: '자기 소개 및 역할 분담', text1: '피카츄', text2: '2019.05.15', text3: '10:56AM'},
+            {id: 1, title: '2주차', subTitle: '사전 자료 조사', text1: '피카츄', text2: '2019.05.15', text3: '10:56AM'},
+            {id: 2, title: '3주차', subTitle: '기획 설계', text1: '라이츄', text2: '2019.05.15', text3: '10:56AM'} 
           ]
         }}
       ],
       StudyGroupBoard: [
         {slotName: 'middle', component: 'ContentHeader', props: {
           width: '90%',
-          title: '스터디그룹 소개',
-          buttonText: '참여하기'
+          title: '스터디 게시판',
+          buttonText: '작성하기'
         }},
+        {slotName: 'middle', component: 'Dropdown', props: {
+          width: '90%',
+          categories: [
+            {
+              name: '카테고리1',
+              value: 1
+            },
+            {
+              name: '카테고리2',
+              value: 2
+            }
+          ]
+        }},
+        {slotName: 'middle', component: 'TextBlocks', props: {
+          width: '90%',
+          blockWidth: '100%',
+          blocks: [
+            {id: 0, title: '1주차', subTitle: '자기 소개 및 역할 분담', text1: '피카츄', text2: '2019.05.15', text3: '10:56AM'},
+            {id: 1, title: '2주차', subTitle: '사전 자료 조사', text1: '피카츄', text2: '2019.05.15', text3: '10:56AM'},
+            {id: 2, title: '3주차', subTitle: '기획 설계', text1: '라이츄', text2: '2019.05.15', text3: '10:56AM'} 
+          ]
+        }}
       ],
       GroupInfoManagement: [
         {slotName: 'middle', component: 'ContentHeader', props: {
@@ -100,9 +121,7 @@ export default {
           slots: [
             {slotName: 'list', component: 'SidebarList',  props: {
               sidebarLists: [
-                {title: "그룹 정보", component: 'GroupInfo', nativeOn: {
-                  click: () => console.log('work!')
-                }},
+                {title: "그룹 정보", component: 'GroupInfo'},
                 {title: "스터디 게시판", component: 'StudyGroupBoard'},
                 {title: "그룹 정보 관리", component: 'GroupInfoManagement'},
                 {title: "멤버 관리", component: 'MemberManagement'},
@@ -110,6 +129,7 @@ export default {
                 {title: "그룹 초대 내역", component: 'ParticipationInvitationList'},
                 {title: "그룹 탈퇴", component: 'GroupSignOut'},
               ],
+              clickEvent: (template) => { this.template.find(x => x.name == 'PageContent').slots = this[template] }
             }}
           ]
         },

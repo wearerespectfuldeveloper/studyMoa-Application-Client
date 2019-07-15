@@ -7,14 +7,19 @@
       :key="block.id"
       :style="{'width': blockWidth, 'height': blockHeight}"
     >
-      <div class="title-and-sub-title">
-        <h5 class="title">{{block.week}}</h5>
-        <h6 class="sub-title">{{block.done}}</h6>
+      <div class="titles">
+        <h5 class="title">{{block.title}}</h5>
+        <h6 class="sub-title">{{block.subTitle}}</h6>
       </div>
       
-      <div class="content1-and-content2">
-        <span class="content1">{{block.date}}</span>
-        <span class="content2">{{block.time}}</span>
+      <div class="texts">
+        <div class="icons" v-if="isTeam">
+          <i class="far fa-trash-alt"></i>
+          <i class="far fa-edit"></i>
+        </div>
+        <span class="text1">{{block.text1}}</span>
+        <span class="text2">{{block.text2}}</span>
+        <span class="text3">{{block.text3}}</span>
       </div>
     </div>
   </div>
@@ -35,8 +40,12 @@ export default {
       default: ''
     },
     blocks: {
-        type: Array,
-        default: () => []
+      type: Array,
+      default: () => []
+    },
+    isTeam: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -63,7 +72,7 @@ export default {
     @include block-shadow;
     margin-bottom: 10px;
 
-    .title-and-sub-title {
+    .titles {
       width: 20%;
       height: 75px;
       display: flex;
@@ -81,23 +90,27 @@ export default {
       }
     }
 
-    .content1-and-content2 {
+    .texts {
       width: 80%;
       display: flex;
       justify-content: flex-end;
       padding-right: 20px;
       align-items: center;
 
+      .icons {
+        margin-right: 10px;
+        i {
+          cursor: pointer;
+        }
+      }
+
       @media screen and (max-width: 960px) {
         width: 60%;
       }
 
-      .content1 {
+      .text1, .text2, .text3 {
         font-size: 12px;
         margin-right: 10px;
-      }
-      .content2 {
-        font-size: 12px;
       }
     }
   }

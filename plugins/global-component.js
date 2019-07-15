@@ -9,6 +9,9 @@ import Dropdown from '@/components/pageContent/Dropdown';
 import TextBlocks from '@/components/pageContent/TextBlocks';
 import ThumnailBlocks from '@/components/pageContent/ThumnailBlocks';
 import Document from '@/components/pageContent/Document';
+import ColoredPageHeader from '@/components/pageContent/ColoredPageHeader';
+import PageFooter from '@/components/pageContent/PageFooter';
+
 
 
 
@@ -24,6 +27,9 @@ Vue.component('Dropdown', Dropdown);
 Vue.component('TextBlocks', TextBlocks);
 Vue.component('ThumnailBlocks', ThumnailBlocks);
 Vue.component('Document', Document);
+Vue.component('ColoredPageHeader', ColoredPageHeader);
+Vue.component('PageFooter', PageFooter);
+
 
 Vue.component('Modal', Modal);
 Vue.component('PageHeader', PageHeader);

@@ -15,7 +15,10 @@
     </aside>
       
     <content :class="{'main-min-on': !toggle, 'main-min-off': toggle}">
-      <nuxt />
+      <transition name="fade">
+        <nuxt />
+      </transition>
+      
     </content>
 
   </div>
@@ -61,6 +64,14 @@ export default {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 </style>
