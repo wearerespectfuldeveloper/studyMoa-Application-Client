@@ -80,6 +80,9 @@ export default {
   },
   methods: {
     clickTest () {
+
+      // 이제 객체 가져와서 다른 유기체랑 교환
+
       this.template.splice(0, 1);
     }
   }
