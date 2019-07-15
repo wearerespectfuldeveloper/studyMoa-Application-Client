@@ -1,5 +1,5 @@
 <template>
-  <div class="meta" :style="{'width': width, 'height': height}">
+  <div class="content-header-container" :style="{'width': width, 'height': height}">
     <div class="row">
       <h3 class="title">{{title}}</h3>
       <span class="sub-title">{{subTitle}}</span>
@@ -33,12 +33,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.meta {
+.content-header-container {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid grey;
+  margin-bottom: 20px;
 
   .row {
     display: flex;

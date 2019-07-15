@@ -15,10 +15,13 @@ export default {
     sidebarLists: {
       type: Array,
       default: []
+    },
+    clickEvent: {
+      type: Function,
+      default: () => console.log('nothing happened')
     }
   },
   mounted() {
-    console.log('list!')
   },
 }
 </script>

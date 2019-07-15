@@ -17,6 +17,10 @@
   box-shadow: 4px 11px 23px -14px rgba(0,0,0,0.75);
 }
 
+@mixin block-shadow {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+}
+
 // 스크롤
 @mixin container-scroll-y {
   overflow-y: scroll;

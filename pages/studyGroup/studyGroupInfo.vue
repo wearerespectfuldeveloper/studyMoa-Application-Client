@@ -1,75 +1,120 @@
 
-<!-- 원하는 구조
-  <div class="study-group-page">
-    
-    <component :is="'SubSidebar'" 
-      :sidebarLists = "sidebarLists"
-    >
-    </component>
-      
-    <div class="main-content">
-      <component :is="'ContentHeader'"
-        :title = "'그룹 정보'"
-        :width = "'90%'"
-      >
-        
-      </component>
-      <component :is="'StudyIntro'"></component>
-      <component :is="'StudyMember'" :members = "members"></component>
-      <component :is="'StudyProgress'"></component>
-      
-    </div>
-  </div>
--->
-
 <script>
 
 export default {
   data () {
     return {
-      sidebarLists: [
-        {title: "그룹 정보", component: 'GroupInfo'},
-        {title: "스터디 게시판", component: 'StudyGroupBoard'},
-        {title: "그룹 정보 관리", component: 'GroupInfoManagement'},
-        {title: "멤버 관리", component: 'MemberManagement'},
-        {title: "참가 요청 내역", component: 'ParticipationRequestList'},
-        {title: "그룹 초대 내역", component: 'ParticipationInvitationList'},
-        {title: "그룹 탈퇴", component: 'GroupSignOut'},
+      GroupInfo: [
+        {slotName: 'middle', component: 'ContentHeader', props: {
+          width: '90%',
+          title: '스터디그룹 소개',
+          buttonText: '참여하기'
+        }},
+        {slotName: 'middle', component: 'Document', props: {
+          width: '90%',
+          paragraph: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
+        }},
+        {slotName: 'middle', component: 'ContentHeader', props: {
+          width: '90%',
+          title: '스터디 멤버',
+          subTitle: '스터디 장 : someone',
+          buttonText: '수정하기'
+        }},
+        {slotName: 'middle', component: 'thumnailBlocks', props: {
+          width: '90%',
+          blockWidth: '100px',
+          isHorizontal: false,
+          thumnailImgSrc: 'https://pbs.twimg.com/profile_images/770139154898382848/ndFg-IDH.jpg',
+          blocks: [
+            {title: 'person1', text: '프론트엔드', id: 0 },
+            {title: 'person2', text: '백엔드', id: 1 },
+            {title: 'person1', text: '프론트엔드', id: 2 },
+            {title: 'person2', text: '백엔드', id: 3 },
+            {title: 'person1', text: '프론트엔드', id: 4 },
+            {title: 'person2', text: '백엔드', id: 5 }
+          ]
+        }},
+        {slotName: 'middle', component: 'ContentHeader', props: {
+          width: '90%',
+          title: '스터디 진행 기록',
+          buttonText: '작성하기'
+        }},
+        {slotName: 'middle', component: 'TextBlocks', props: {
+          width: '90%',
+          blockWidth: '100%',
+          blocks: [
+            {id: 0, title: '1주차', subTitle: '자기 소개 및 역할 분담', section1: '피카츄', section2: '2019.05.15', time: '10:56AM'},
+            {id: 1, title: '2주차', subTitle: '사전 자료 조사', section1: '피카츄', section2: '2019.05.15', time: '10:56AM'},
+            {id: 2, title: '3주차', subTitle: '기획 설계', section1: '라이츄', section2: '2019.05.15', time: '10:56AM'} 
+          ]
+        }}
       ],
-      members: [
-        {name: 'person1', role: '프론트엔드', id: 0 },
-        {name: 'person2', role: '백엔드', id: 1 }
+      StudyGroupBoard: [
+        {slotName: 'middle', component: 'ContentHeader', props: {
+          width: '90%',
+          title: '스터디그룹 소개',
+          buttonText: '참여하기'
+        }},
       ],
-      progresses: [
-        {id: 0, week: '1주차', done: '자기 소개 및 역할 분담', host: '피카츄', date: '2019.05.15', time: '10:56AM'},
-        {id: 1, week: '2주차', done: '사전 자료 조사', host: '피카츄', date: '2019.05.15', time: '10:56AM'},
-        {id: 2, week: '3주차', done: '기획 설계', host: '라이츄', date: '2019.05.15', time: '10:56AM'} 
-      ]
-    }
-  },
-  render(createElement) {
-
-    // 아...이게 데이터 초기화 이전에 먼저 실행되는구나. 어디다 놓을지를 생각해봐야겠는데
-
-    const template = 
+      GroupInfoManagement: [
+        {slotName: 'middle', component: 'ContentHeader', props: {
+          width: '90%',
+          title: '스터디그룹 소개',
+          buttonText: '참여하기'
+        }},
+        
+      ],
+      MemberManagement: [
+        {slotName: 'middle', component: 'ContentHeader', props: {
+          width: '90%',
+          title: '스터디그룹 소개',
+          buttonText: '참여하기'
+        }},
+      ],
+      ParticipationRequestList: [
+        {slotName: 'middle', component: 'ContentHeader', props: {
+          width: '90%',
+          title: '스터디그룹 소개',
+          buttonText: '참여하기'
+        }},
+      ],
+      GroupSignOut: [
+        {slotName: 'middle', component: 'ContentHeader', props: {
+          width: '90%',
+          title: '스터디그룹 소개',
+          buttonText: '참여하기'
+        }}
+      ],
+      template: 
       [
         {
           name: 'SubSidebar',
           props: {
             width: '',
             height: '',
+            clickEvent: this.switchSlots
           },
           class: {
             'sub-sidebar': true
           },
           slots: [
-            {slotName: 'list', component: 'SidebarList', props: {
-              sidebarLists: this.sidebarLists
+            {slotName: 'list', component: 'SidebarList',  props: {
+              sidebarLists: [
+                {title: "그룹 정보", component: 'GroupInfo', nativeOn: {
+                  click: () => console.log('work!')
+                }},
+                {title: "스터디 게시판", component: 'StudyGroupBoard'},
+                {title: "그룹 정보 관리", component: 'GroupInfoManagement'},
+                {title: "멤버 관리", component: 'MemberManagement'},
+                {title: "참가 요청 내역", component: 'ParticipationRequestList'},
+                {title: "그룹 초대 내역", component: 'ParticipationInvitationList'},
+                {title: "그룹 탈퇴", component: 'GroupSignOut'},
+              ],
             }}
           ]
         },
         {
-          name: 'VerticalBlock',
+          name: 'PageContent',
           class: {
             "main-content": true
           },
@@ -77,80 +122,28 @@ export default {
             width: '',
             height: '',
           },
-          slots: [
-            {slotName: 'header', component: 'ContentHeader', props: {
-              width: '90%',
-              title: '그룹정보'
-            }},
-            {slotName: 'content', component: 'StudyIntro', props: {
-              headerTitle: '스터디그룹 소개',
-              headerSubTitle: '',
-              headerButtonTitle: '참여하기'
-            }},
-            {slotName: 'content', component: 'StudyMember', props: {
-              headerTitle: '스터디멤버 소개',
-              headerSubTitle: '총원 4 / 6',
-              headerButtonTitle: '프로필 보기'
-            }},
-            {slotName: 'content', component: 'StudyProgress', props: {
-              headerTitle: '스터디 진행상황',
-              headerSubTitle: '',
-              headerButtonTitle: '',
-              progresses: this.progresses
-            }}
-            
-          ]
+          slots: null
         }
       ]
-
-    let organisms = template.map((x) => {
-      
-      const slotList = x.slots.map(s => createElement('component', { 
-        is: s.component,
-        slot: s.slotName,
-        props: s.props
-      }));
-
-      return createElement('component', 
-        // 템플릿 배열 안의 객체들마다 createElement 실행
-        {
-          is: x.name,
-          class: x.class,
-          props: x.props,
-        },
-        slotList
-      )}
-    )
-
-    return createElement('div',  
-      {
-        class: "study-group-page"
-      },
-      organisms
-    );
-
+    }
   },
-  mounted() {
+  render(createElement) {
+    return this.$templateLoad(createElement, this.template);
   },
-  components: {
-    // 유기체 컴포넌트
-    SubSidebar: () => import('@/components/pageContent/subSidebar/subSidebar'),
-    VerticalBlock: () => import('@/components/pageContent/verticalBlock/verticalBlock'),
-    PageHeader: () => import('@/components/pageContent/pageHeader/pageHeader'),
-    Dropdown: () => import('@/components/pageContent/dropdown/dropdown'),
-    
-    // 분자 컴포넌트
-    ContentHeader : () => import('@/components/pageContent/contentHeader'),
-    StudyIntro: () => import('@/components/pageContent/studyIntro'),
-    StudyMember: () => import('@/components/pageContent/studyMember'),
-    StudyProgress: () => import('@/components/pageContent/studyProgress'),
-    SidebarList: () => import('@/components/pageContent/sidebarList'),
-  } 
+  created() {
+    this.template[1].slots = this.GroupInfo;
+  },
+  methods: {
+    switchSlots (slots) {
+      console.log(this);
+      // this.template[1].slots = slots;
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.study-group-page {
+.page-container {
   height: 100%;
   display: grid;
   grid-template-columns: repeat(16, 1fr);
