@@ -10,7 +10,8 @@ let templateLoad = {
         const slotList = x.slots.map(s => createElement('component', { 
           is: s.component,
           slot: s.slotName,
-          props: s.props
+          props: s.props,
+          on: s.on
         }));
   
         return createElement('component', 
@@ -19,6 +20,7 @@ let templateLoad = {
             is: x.name,
             class: x.class,
             props: x.props,
+            on: x.on
           },
           slotList
         )}

@@ -1,57 +1,10 @@
 
-<!-- 원하는 구조
-  <div class="study-group-page">
-    
-    <component :is="'SubSidebar'" 
-      :sidebarLists = "sidebarLists"
-    >
-    </component>
-      
-    <div class="main-content">
-      <component :is="'ContentHeader'"
-        :title = "'그룹 정보'"
-        :width = "'90%'"
-      >
-        
-      </component>
-      <component :is="'StudyIntro'"></component>
-      <component :is="'StudyMember'" :members = "members"></component>
-      <component :is="'StudyProgress'"></component>
-      
-    </div>
-  </div>
--->
-
 <script>
 
 export default {
   data () {
     return {
-      sidebarLists: [
-        {title: "그룹 정보", component: 'GroupInfo'},
-        {title: "스터디 게시판", component: 'StudyGroupBoard'},
-        {title: "그룹 정보 관리", component: 'GroupInfoManagement'},
-        {title: "멤버 관리", component: 'MemberManagement'},
-        {title: "참가 요청 내역", component: 'ParticipationRequestList'},
-        {title: "그룹 초대 내역", component: 'ParticipationInvitationList'},
-        {title: "그룹 탈퇴", component: 'GroupSignOut'},
-      ],
-      members: [
-        {name: 'person1', role: '프론트엔드', id: 0 },
-        {name: 'person2', role: '백엔드', id: 1 }
-      ],
-      progresses: [
-        {id: 0, week: '1주차', done: '자기 소개 및 역할 분담', host: '피카츄', date: '2019.05.15', time: '10:56AM'},
-        {id: 1, week: '2주차', done: '사전 자료 조사', host: '피카츄', date: '2019.05.15', time: '10:56AM'},
-        {id: 2, week: '3주차', done: '기획 설계', host: '라이츄', date: '2019.05.15', time: '10:56AM'} 
-      ]
-    }
-  },
-  render(createElement) {
-
-    // 아...이게 데이터 초기화 이전에 먼저 실행되는구나. 어디다 놓을지를 생각해봐야겠는데
-
-    const template = 
+      template: 
       [
         {
           name: 'SubSidebar',
@@ -64,12 +17,20 @@ export default {
           },
           slots: [
             {slotName: 'list', component: 'SidebarList', props: {
-              sidebarLists: this.sidebarLists
+              sidebarLists: [
+                {title: "그룹 정보", component: 'GroupInfo'},
+                {title: "스터디 게시판", component: 'StudyGroupBoard'},
+                {title: "그룹 정보 관리", component: 'GroupInfoManagement'},
+                {title: "멤버 관리", component: 'MemberManagement'},
+                {title: "참가 요청 내역", component: 'ParticipationRequestList'},
+                {title: "그룹 초대 내역", component: 'ParticipationInvitationList'},
+                {title: "그룹 탈퇴", component: 'GroupSignOut'},
+              ],
             }}
           ]
         },
         {
-          name: 'VerticalBlock',
+          name: 'PageContent',
           class: {
             "main-content": true
           },
@@ -77,68 +38,56 @@ export default {
             width: '',
             height: '',
           },
+          on: {
+            click: this.clickTest
+          },
           slots: [
             {slotName: 'header', component: 'ContentHeader', props: {
               width: '90%',
               title: '그룹정보'
             }},
-            {slotName: 'content', component: 'StudyIntro', props: {
-              headerTitle: '스터디그룹 소개',
-              headerSubTitle: '',
-              headerButtonTitle: '참여하기'
+            {slotName: 'middle', component: 'ContentHeader', props: {
+              width: '90%',
+              title: '그룹정보'
             }},
-            {slotName: 'content', component: 'StudyMember', props: {
-              headerTitle: '스터디멤버 소개',
-              headerSubTitle: '총원 4 / 6',
-              headerButtonTitle: '프로필 보기'
+            {slotName: 'middle', component: 'ContentHeader', props: {
+              width: '90%',
+              title: '그룹정보'
             }},
-            {slotName: 'content', component: 'StudyProgress', props: {
-              headerTitle: '스터디 진행상황',
-              headerSubTitle: '',
-              headerButtonTitle: '',
-              progresses: this.progresses
+            {slotName: 'middle', component: 'ContentHeader', props: {
+              width: '90%',
+              title: '그룹정보'
             }}
-            
           ]
         }
-      ]
-
-    let organisms = template.map((x) => {
+      ],
       
-      const slotList = x.slots.map(s => createElement('component', { 
-        is: s.component,
-        slot: s.slotName,
-        props: s.props
-      }));
-
-      return createElement('component', 
-        // 템플릿 배열 안의 객체들마다 createElement 실행
-        {
-          is: x.name,
-          class: x.class,
-          props: x.props,
-        },
-        slotList
-      )}
-    )
-
-    return createElement('div',  
-      {
-        class: "study-group-page"
-      },
-      organisms
-    );
-
+      members: [
+        {name: 'person1', role: '프론트엔드', id: 0 },
+        {name: 'person2', role: '백엔드', id: 1 }
+      ],
+      progresses: [
+        {id: 0, week: '1주차', done: '자기 소개 및 역할 분담', host: '피카츄', date: '2019.05.15', time: '10:56AM'},
+        {id: 1, week: '2주차', done: '사전 자료 조사', host: '피카츄', date: '2019.05.15', time: '10:56AM'},
+        {id: 2, week: '3주차', done: '기획 설계', host: '라이츄', date: '2019.05.15', time: '10:56AM'} 
+      ]
+    }
+  },
+  render(createElement) {
+    return this.$templateLoad(createElement, this.template);
   },
   mounted() {
   },
-  components: {
-  } 
+  methods: {
+    clickTest () {
+      this.template.splice(0, 1);
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.study-group-page {
+.page-container {
   height: 100%;
   display: grid;
   grid-template-columns: repeat(16, 1fr);

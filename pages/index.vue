@@ -106,7 +106,6 @@ export default {
     }
   },
   render(createElement) {
-    
     return this.$templateLoad(createElement, this.template);
   },
   mounted() {

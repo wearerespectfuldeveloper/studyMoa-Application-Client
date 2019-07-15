@@ -36,6 +36,10 @@ export default {
     margin-left: 10px;
     padding: 5px 5px 10px 5px;
     cursor: pointer;
+    option {
+      padding: 5px 5px 10px 5px;
+
+    }
   }
 }
 </style>
