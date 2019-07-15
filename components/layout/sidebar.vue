@@ -3,7 +3,7 @@
     <ul v-for="content in sidebarContent" :key="content.title">
       <span class="disappear">{{content.title}}</span>
       <li v-for="sub in content.subs" :key="sub">
-        <a href="#"><i :class="'fas fa-' + sub.icon"></i><span class="disappear">{{sub.title}}</span></a>
+        <router-link :to="{ name: sub.name }"><i :class="'fas fa-' + sub.icon"></i><span class="disappear">{{sub.title}}</span></router-link>
       </li>
     </ul>
   </div>
@@ -20,9 +20,9 @@ export default {
           icon: "user-edit",
           id: 0,
           subs: [
-            {id: 0, title: '카테고리 1', icon: "user-edit"},
-            {id: 1, title: '카테고리 2', icon: "user-edit"},
-            {id: 2, title: '카테고리 3', icon: "user-edit"}
+            {id: 0, title: '카테고리 1', icon: "user-edit", name: ''},
+            {id: 1, title: '카테고리 2', icon: "user-edit", name: ''},
+            {id: 2, title: '카테고리 3', icon: "user-edit", name: ''}
           ]
         },
         {
@@ -30,8 +30,8 @@ export default {
           icon: "user-edit",
           id: 1,
           subs: [
-            {title: '스터디 구해요', icon: "user-edit"},
-            {title: '잡담', icon: "user-edit"}
+            {title: '스터디 구해요', icon: "user-edit", name: ''},
+            {title: '잡담', icon: "user-edit", name: "board-chat-board"}
           ]
         }
       ]
