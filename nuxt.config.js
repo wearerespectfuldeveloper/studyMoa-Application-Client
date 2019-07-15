@@ -12,7 +12,8 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      {rel: 'stylesheet', href: "https://use.fontawesome.com/releases/v5.2.0/css/all.css"}
+      {rel: 'stylesheet', href: "https://use.fontawesome.com/releases/v5.2.0/css/all.css"},
+      {rel: 'stylesheet', type: 'text/css', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'}
     ]
   },
   /*
