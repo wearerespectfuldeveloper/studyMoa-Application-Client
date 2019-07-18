@@ -9,6 +9,7 @@ let templateLoad = {
       
         const slotList = x.slots.map(s => createElement('component', { 
           is: s.component,
+          key: s.component,
           slot: s.slotName,
           props: s.props,
           on: s.on,
@@ -19,6 +20,7 @@ let templateLoad = {
           // 템플릿 배열 안의 객체들마다 createElement 실행
           {
             is: x.name,
+            key: x.name,
             class: x.class,
             props: x.props,
             on: x.on,
@@ -27,13 +29,15 @@ let templateLoad = {
           slotList
         )}
       )
-  
-      return createElement('div', 
-        {
-          class: "page-container"
-        },
-        organisms
-      );
+      
+      return createElement('transition-group', {
+        class: "page-container",
+        attrs: {
+          name: 'fade',
+          mode: 'out-in',
+          tag: 'div'
+        }
+      }, organisms);
     }
   }
 }

@@ -36,10 +36,16 @@ export default {
         {slotName: 'middle', component: 'ContentHeader', props: {
           width: '90%',
           title: '스터디 진행 기록',
-          buttonText: '작성하기'
+          buttonText: '작성하기',
+          buttonClickEvent: function () {
+            location.href = "#open-modal";
+          },
         }},
         {slotName: 'middle', component: 'TextBlocks', props: {
           width: '90%',
+          clickEvent: function () {
+            location.href="#open-modal";
+          },
           blockWidth: '100%',
           blocks: [
             {id: 0, title: '1주차', subTitle: '자기 소개 및 역할 분담', text1: '피카츄', text2: '2019.05.15', text3: '10:56AM'},
@@ -51,7 +57,7 @@ export default {
       StudyGroupBoard: [
         {slotName: 'middle', component: 'ContentHeader', props: {
           width: '90%',
-          title: '스터디 게시판',
+          title: '스터디그룹 게시판',
           buttonText: '작성하기'
         }},
         {slotName: 'middle', component: 'Dropdown', props: {
@@ -69,6 +75,7 @@ export default {
         }},
         {slotName: 'middle', component: 'TextBlocks', props: {
           width: '90%',
+          icons: ['edit', 'trash-alt'],
           blockWidth: '100%',
           blocks: [
             {id: 0, title: '1주차', subTitle: '자기 소개 및 역할 분담', text1: '피카츄', text2: '2019.05.15', text3: '10:56AM'},
@@ -78,33 +85,75 @@ export default {
         }}
       ],
       GroupInfoManagement: [
-        {slotName: 'middle', component: 'ContentHeader', props: {
+        {slotName: 'middle', component: 'PageForm', props: {
           width: '90%',
-          title: '스터디그룹 소개',
-          buttonText: '참여하기'
+          height: '90%'
         }},
-        
       ],
       MemberManagement: [
         {slotName: 'middle', component: 'ContentHeader', props: {
           width: '90%',
-          title: '스터디그룹 소개',
+          title: '멤버관리',
+          subTitle: '현재 인원 : 4  전체 인원 : 6',
           buttonText: '참여하기'
         }},
+        {slotName: 'middle', component: 'TextBlocks', props: {
+          width: '90%',
+          icons: ['user-cog', 'edit'],
+          clickEvent: function () {
+            location.href="#open-modal"; 
+          },
+          blockWidth: '100%',
+          blocks: [
+            {id: 0, title: '1주차', subTitle: '자기 소개 및 역할 분담', text1: '피카츄', text2: '2019.05.15', text3: '10:56AM'},
+            {id: 1, title: '2주차', subTitle: '사전 자료 조사', text1: '피카츄', text2: '2019.05.15', text3: '10:56AM'},
+            {id: 2, title: '3주차', subTitle: '기획 설계', text1: '라이츄', text2: '2019.05.15', text3: '10:56AM'} 
+          ]
+        }}
       ],
       ParticipationRequestList: [
         {slotName: 'middle', component: 'ContentHeader', props: {
           width: '90%',
-          title: '스터디그룹 소개',
+          title: '참가 요청 내역',
           buttonText: '참여하기'
+        }},
+        {slotName: 'middle', component: 'ThumnailBlocks', props: {
+          width: '90%',
+          blocks: [
+            {title: '블록1', text: 'Hellow World!', id: 0 },
+            {title: '블록2', text: 'Hellow World!', id: 1 },
+            {title: '블록3', text: 'Hellow World!', id: 2 },
+            {title: '블록4', text: 'Hellow World!', id: 3 },
+            {title: '블록5', text: 'Hellow World!', id: 4 },
+            {title: '블록6', text: 'Hellow World!', id: 5 }
+          ],
+        }},
+      ],
+      ParticipationInvitationList: [
+        {slotName: 'middle', component: 'ContentHeader', props: {
+          width: '90%',
+          title: '그룹 초대 내역',
+          buttonText: '참여하기'
+        }},
+        {slotName: 'middle', component: 'ThumnailBlocks', props: {
+          width: '90%',
+          blocks: [
+            {title: '블록1', text: 'Hellow World!', id: 0 },
+            {title: '블록2', text: 'Hellow World!', id: 1 },
+            {title: '블록3', text: 'Hellow World!', id: 2 },
+            {title: '블록4', text: 'Hellow World!', id: 3 },
+            {title: '블록5', text: 'Hellow World!', id: 4 },
+            {title: '블록6', text: 'Hellow World!', id: 5 }
+          ],
         }},
       ],
       GroupSignOut: [
-        {slotName: 'middle', component: 'ContentHeader', props: {
+        
+        {slotName: 'middle', component: 'MessageAndButton', props: {
           width: '90%',
-          title: '스터디그룹 소개',
-          buttonText: '참여하기'
-        }}
+          height: '90%'
+        }},
+
       ],
       template: 
       [
@@ -122,7 +171,7 @@ export default {
             {slotName: 'list', component: 'SidebarList',  props: {
               sidebarLists: [
                 {title: "그룹 정보", component: 'GroupInfo'},
-                {title: "스터디 게시판", component: 'StudyGroupBoard'},
+                {title: "스터디그룹 게시판", component: 'StudyGroupBoard'},
                 {title: "그룹 정보 관리", component: 'GroupInfoManagement'},
                 {title: "멤버 관리", component: 'MemberManagement'},
                 {title: "참가 요청 내역", component: 'ParticipationRequestList'},
@@ -143,11 +192,35 @@ export default {
             height: '',
           },
           slots: null
+        },
+        {
+          name: 'Modal',
+          class: {
+          },
+          props: {
+            width: '80%',
+            height: '80%',
+            showButton: false
+          },
+          slots: [
+            {slotName: 'header', component: 'ColoredPageHeader', props: {
+              width: '100%'
+            }},
+            {slotName: 'body', component: 'PageForm', props: {
+              width: '80%',
+              height: '80%'
+            }},
+            {slotName: 'footer', component: 'PageFooter', props: {
+              width: '80%'
+            }},
+          ]
+
         }
       ]
     }
   },
   render(createElement) {
+    // 여기서 케이스 나누자
     return this.$templateLoad(createElement, this.template);
   },
   created() {

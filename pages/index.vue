@@ -62,6 +62,7 @@ export default {
         {
           name: 'Modal',
           props: {
+            height: '80%',
             showButton: false
           },
           class: {

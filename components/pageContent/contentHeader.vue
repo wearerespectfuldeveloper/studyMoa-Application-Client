@@ -1,11 +1,14 @@
 <template>
   <div class="content-header-container" :style="{'width': width, 'height': height}">
     <div class="row">
-      <h3 class="title">{{title}}</h3>
+      <h3 class="title" >{{title}}</h3>
       <span class="sub-title">{{subTitle}}</span>
     </div>
-      
-    <a href="#" class="meta-button">{{buttonText}}</a>
+    <div>
+      <a class="meta-button1" @click="buttonClickEvent">{{buttonText}}</a>
+      <a class="meta-button2" @click="buttonClickEvent">{{buttonText2}}</a>
+    </div>
+    
         
   </div>
 </template>
@@ -28,6 +31,16 @@ export default {
       type: String,
       default: ''
     },
+    buttonText2: {
+      type: String,
+      default: ''
+    },
+    buttonClickEvent: {
+      type: Function,
+      default: function () {
+        console.log('nothing happened')
+      }
+    }
   }
 }
 </script>
@@ -56,7 +69,13 @@ export default {
     padding: 10px 0 10px 0;
   }
 
-  .meta-button {
+  .meta-button1 {
+    @include text-anchor-button($studyIntroParticipateButton);
+    @include button-color-transition($studyIntroParticipateButton, white);
+    font-size: 12px;
+    padding: 10px;
+  }
+  .meta-button2 {
     @include text-anchor-button($studyIntroParticipateButton);
     @include button-color-transition($studyIntroParticipateButton, white);
     font-size: 12px;

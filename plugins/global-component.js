@@ -11,6 +11,15 @@ import ThumnailBlocks from '@/components/pageContent/ThumnailBlocks';
 import Document from '@/components/pageContent/Document';
 import ColoredPageHeader from '@/components/pageContent/ColoredPageHeader';
 import PageFooter from '@/components/pageContent/PageFooter';
+import PageForm from '@/components/pageContent/PageForm';
+import Indicator from '@/components/pageContent/Indicator';
+import MessageAndButton from '@/components/pageContent/MessageAndButton';
+
+
+import TestFile1 from '@/components/pageContent/TestFile1';
+import TestFile2 from '@/components/pageContent/TestFile2';
+import TestFile3 from '@/components/pageContent/TestFile3';
+
 
 
 
@@ -29,6 +38,15 @@ Vue.component('ThumnailBlocks', ThumnailBlocks);
 Vue.component('Document', Document);
 Vue.component('ColoredPageHeader', ColoredPageHeader);
 Vue.component('PageFooter', PageFooter);
+Vue.component('PageForm', PageForm);
+Vue.component('Indicator', Indicator);
+Vue.component('MessageAndButton', MessageAndButton);
+
+
+Vue.component('TestFile1', TestFile1);
+Vue.component('TestFile2', TestFile2);
+Vue.component('TestFile3', TestFile3);
+
 
 
 Vue.component('Modal', Modal);

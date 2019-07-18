@@ -38,6 +38,9 @@
   }
 }
 
+
+//-------------- 버튼
+
 // 배경없이 텍스트만 있는 버튼
 @mixin text-anchor-button($color) {
   display: inline-block;
@@ -46,6 +49,53 @@
   border: none;
   text-align: center; 
   font-size: 15px;
+  cursor: pointer;
+}
+
+// 플랫 디자인 버튼
+@mixin flat-button($color) {
+  
+}
+
+// 호버 트랜지션 버튼
+@mixin border-transition-button($color) {
+  width: 100%;
+  background: $color;
+  color:#fff;
+  border:none;
+  position:relative;
+  font-size:1.6em;
+  padding: 10px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  &:hover{
+    background:#fff;
+    color: $color;
+
+    &:before, &:after {
+      width:100%;
+      transition:800ms ease all;
+    }
+
+  }
+  &:before, &:after {
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: $color;
+    transition:400ms ease all;
+  }
+
+  &:after {
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
 }
 
 // 정사각형 블록
@@ -67,3 +117,42 @@
 
 
 
+// 인풋
+
+@mixin bottomBorderInput {
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid $inputBottomBorderColor;
+}
+
+
+// 텍스트 AREA
+
+@mixin bottomBorderTextarea {
+  resize: none;
+  padding: 10px;
+  border: none;
+  height: 200px;
+  border-bottom: 1px solid $textareaBottomBorderColor;
+}
+
+@mixin boldLabel {
+  padding: 10px 0 10px 0;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+@mixin biggerCheckbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #bcbcbc;
+  cursor: pointer;
+}
+
+
+// 아이콘
+
+@mixin clickableIcon($iconColor) {
+
+}

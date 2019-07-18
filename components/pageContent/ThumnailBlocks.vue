@@ -45,7 +45,7 @@ export default {
     },
     clickEvent: {
       type: Function,
-      defalt: () => console.log('nothing happened')
+      default: function () { console.log('nothing happened'); }
     },
     thumnailSectorSize: {
       type: String,

@@ -3,7 +3,7 @@
   <div id="grid">
     
     <div class="brand" :class="{'side-min-on': !toggle, 'side-min-off': toggle}">
-      <a href="#" @click="test">WARD</a>
+      <nuxt-link to="/" @click="test">WARD</nuxt-link>
     </div>
 
     <header :class="{'main-min-on': !toggle, 'main-min-off': toggle}">
@@ -70,9 +70,19 @@ export default {
   transition: opacity 1s ease-out;
 }
 
+.fade-move {
+  transition: transform 1s;
+}
+
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+.transform-enter-active, .transform-leave-active {
+  transition: transform 1s;
+}
+
+
 
 </style>
 

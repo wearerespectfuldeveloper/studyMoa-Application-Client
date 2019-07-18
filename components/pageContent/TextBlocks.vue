@@ -13,13 +13,18 @@
       </div>
       
       <div class="texts">
-        <div class="icons" v-if="isTeam">
-          <i class="far fa-trash-alt"></i>
-          <i class="far fa-edit"></i>
-        </div>
         <span class="text1">{{block.text1}}</span>
         <span class="text2">{{block.text2}}</span>
         <span class="text3">{{block.text3}}</span>
+      </div>
+      <div class="icons" v-if="isTeam">
+        <i 
+          v-for="icon in icons" 
+          :key="icon" 
+          :class="'fas fa-'+icon"
+          @click="clickEvent"
+        ></i>
+        
       </div>
     </div>
   </div>
@@ -46,6 +51,20 @@ export default {
     isTeam: {
       type: Boolean,
       default: true
+    },
+    icons: {
+      type: Array,
+      default: function () {
+        return [
+          'edit'
+        ]
+      }
+    },
+    clickEvent: {
+      type: Function,
+      default: function () {
+        console.log('nothing happened');
+      }
     }
   },
   data () {
@@ -69,6 +88,7 @@ export default {
     display: flex;
     flex-flow: row;
     align-items: center;
+    cursor: pointer;
     @include block-shadow;
     margin-bottom: 10px;
 
@@ -99,7 +119,9 @@ export default {
 
       .icons {
         margin-right: 10px;
+
         i {
+          
           cursor: pointer;
         }
       }
