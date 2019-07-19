@@ -1,29 +1,24 @@
+
 <script>
+// 일단 index 먼저 로 되는지 시험해보자
+import { mapState } from "vuex";
+
 export default {
   data () {
     return {
-      // template은 비동기로 가져올 예정
       template: [
         {
           name: 'PageHeader',
           props: {
 
           },
-          class: {
-            'page-header': true
-          },
+          class: 'page-header',
           slots: [
             {slotName: 'dropdown', component: 'Dropdown', props: {
               width: '90%',
               categories: [
-                {
-                  name: '카테고리1',
-                  value: 1
-                },
-                {
-                  name: '카테고리2',
-                  value: 2
-                }
+                { name: '카테고리1', value: 1},
+                { name: '카테고리2', value: 2}
               ]
             }}
           ]
@@ -33,9 +28,7 @@ export default {
           props: {
             
           },
-          class: {
-            'page-content': true
-          },
+          class: 'page-content',
           slots: [
             {slotName: 'top', component: 'ThumnailBlocks', props: {
               width: '90%',
@@ -45,9 +38,6 @@ export default {
               thumnailSectorMinSize: '200px',
               thumnailIcon: 'language',
               textSectorSize: '80%',
-              clickEvent:  () => {
-                location.href = "#open-modal";
-              },
               blocks: [
                 {title: '블록1', text: 'Hellow World!', id: 0 },
                 {title: '블록2', text: 'Hellow World!', id: 1 },
@@ -57,7 +47,7 @@ export default {
                 {title: '블록6', text: 'Hellow World!', id: 5 }
               ],
             }}
-          ]
+          ],
         },
         {
           name: 'Modal',
@@ -121,26 +111,19 @@ export default {
               width: '80%',
               height: '50px',
             }}
-          ]
+          ],
         },
       ]
     }
   },
+  computed: {
+    
+  },
   render(createElement) {
     return this.$templateLoad(createElement, this.template);
   },
-  transition: {
-
+  created () {
   },
-  components: {
-  }, 
-  computed: {
-  },
-  components: {
-  },
-  methods: {
-    
-  }
 }
 </script>
 

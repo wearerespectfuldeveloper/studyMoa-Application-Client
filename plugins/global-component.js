@@ -42,12 +42,9 @@ Vue.component('PageForm', PageForm);
 Vue.component('Indicator', Indicator);
 Vue.component('MessageAndButton', MessageAndButton);
 
-
 Vue.component('TestFile1', TestFile1);
 Vue.component('TestFile2', TestFile2);
 Vue.component('TestFile3', TestFile3);
-
-
 
 Vue.component('Modal', Modal);
 Vue.component('PageHeader', PageHeader);

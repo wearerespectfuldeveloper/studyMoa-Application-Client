@@ -15,10 +15,7 @@
     </aside>
       
     <content :class="{'main-min-on': !toggle, 'main-min-off': toggle}">
-      <transition name="fade">
-        <nuxt />
-      </transition>
-      
+      <nuxt />
     </content>
 
   </div>

@@ -6,7 +6,9 @@ let templateLoad = {
   install: (Vue) => {
     Vue.prototype.$templateLoad = (createElement, template) => {
       let organisms = template.map((x) => {
-      
+
+        console.log(x.slots)
+
         const slotList = x.slots.map(s => createElement('component', { 
           is: s.component,
           key: s.component,
@@ -28,6 +30,7 @@ let templateLoad = {
           },
           slotList
         )}
+
       )
       
       return createElement('transition-group', {

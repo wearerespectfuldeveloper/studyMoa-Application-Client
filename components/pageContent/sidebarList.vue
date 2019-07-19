@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="list in sidebarLists" :key="list.title">
-      <a href="#" @click="clickEvent(list.component)">{{list.title}}</a>
+      <nuxt-link :to="list.component">{{list.title}}</nuxt-link>
     </li>
   </ul>
 </template>
