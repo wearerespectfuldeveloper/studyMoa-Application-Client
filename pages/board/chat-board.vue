@@ -5,76 +5,49 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">작성자</th>
+                <th scope="col">제목</th>
+                <th scope="col">작성일</th>
+                <th scope="col">조회수</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr v-for="post in list">
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">5</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">6</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">7</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">8</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">9</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">10</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
+                <td>{{ post.writer }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.created_dt }}</td>
+                <td>{{ post.volume }}</td>
             </tr>
             </tbody>
         </table>
             <div>
-                <a href='#' style="float: right;" class="btn btn-success">글쓰기</a>
+                <nuxt-link to="/board/chat-add" style="float: right;" class="btn btn-success">글쓰기</nuxt-link>
             </div>
         </form>
     </div>
 </template>
 
 <script>
+    import BoardService from '@/service/board.service';
+
     export default {
-        name: "chat-board"
+        name: "chat-board",
+        data(){
+            return{
+                list:[],
+                service: new BoardService()
+            }
+
+        },
+        mounted() {
+            this.init();
+        },
+        methods:{
+            init(){
+               this.list = this.service.getList().data;
+            }
+        }
     }
 </script>
 
