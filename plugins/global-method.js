@@ -5,42 +5,121 @@ import Vue from 'vue';
 let templateLoad = {
   install: (Vue) => {
     Vue.prototype.$templateLoad = (createElement, template) => {
-      let organisms = template.map((x) => {
-
-        console.log(x.slots)
-
-        const slotList = x.slots.map(s => createElement('component', { 
-          is: s.component,
-          key: s.component,
-          slot: s.slotName,
-          props: s.props,
-          on: s.on,
-          nativeOn: s.nativeOn
-        }));
-  
-        return createElement('component', 
-          // 템플릿 배열 안의 객체들마다 createElement 실행
-          {
-            is: x.name,
-            key: x.name,
-            class: x.class,
-            props: x.props,
-            on: x.on,
-            nativeOn: x.nativeOn
-          },
-          slotList
-        )}
-
-      )
       
-      return createElement('transition-group', {
-        class: "page-container",
-        attrs: {
-          name: 'fade',
-          mode: 'out-in',
-          tag: 'div'
+      let organisms = template.map((x) => {
+        if (x.slots == null || undefined || x.slots.length === 0) {
+          
+          return createElement('component', 
+          // 템플릿 배열 안의 객체들마다 createElement 실행
+            {
+              is: x.name,
+              key: x.name,
+              class: x.class,
+              props: x.props,
+              on: x.on,
+              nativeOn: x.nativeOn
+            }
+          )
+        } else {
+
+          const slotList = x.slots.map(s => createElement('component', { 
+            is: s.component,
+            key: s.component,
+            slot: s.slotName,
+            props: s.props,
+            on: s.on,
+            nativeOn: s.nativeOn
+          }));
+
+          return createElement('component', 
+          // 템플릿 배열 안의 객체들마다 createElement 실행
+            {
+              is: x.name,
+              key: x.name,
+              class: x.class,
+              props: x.props,
+              on: x.on,
+              nativeOn: x.nativeOn
+            },
+            slotList
+          )
+          
         }
-      }, organisms);
+        
+  
+        
+      });
+      
+      return createElement('div', {class: "page-container"}, organisms);
+
+
+
+      // return createElement('transition-group', {
+      //   class: "page-container",
+      //   attrs: {
+      //     name: 'fade',
+      //     mode: 'out-in',
+      //     tag: 'div'
+      //   }
+      // }, organisms);
+    }
+
+    Vue.prototype.$subTemplateLoad = (createElement, template) => {
+      
+      let organisms = template.map((x) => {
+        if (x.slots == null || undefined || x.slots.length === 0) {
+          
+          return createElement('component', 
+          // 템플릿 배열 안의 객체들마다 createElement 실행
+            {
+              is: x.name,
+              key: x.name,
+              class: x.class,
+              props: x.props,
+              on: x.on,
+              nativeOn: x.nativeOn
+            }
+          )
+        } else {
+
+          const slotList = x.slots.map(s => createElement('component', { 
+            is: s.component,
+            key: s.component,
+            slot: s.slotName,
+            props: s.props,
+            on: s.on,
+            nativeOn: s.nativeOn
+          }));
+
+          return createElement('component', 
+          // 템플릿 배열 안의 객체들마다 createElement 실행
+            {
+              is: x.name,
+              key: x.name,
+              class: x.class,
+              props: x.props,
+              on: x.on,
+              nativeOn: x.nativeOn
+            },
+            slotList
+          )
+          
+        }
+        
+      });
+      
+      return createElement('div', { class: "main-content" }, organisms);
+
+      
+
+      // return createElement('transition-group', {
+      //   class: "page-container",
+      //   attrs: {
+      //     name: 'fade',
+      //     mode: 'out-in',
+      //     tag: 'div'
+      //   }
+      // }, organisms);
     }
   }
 }

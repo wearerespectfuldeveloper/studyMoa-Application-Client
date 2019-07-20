@@ -64,19 +64,15 @@ export default {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 1s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
 .fade-move {
-  transition: transform 1s;
+  transition: transform 0.5s;
 }
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
-}
-
-.transform-enter-active, .transform-leave-active {
-  transition: transform 1s;
 }
 
 

@@ -6,33 +6,8 @@ export default {
       template: 
       [
         {
-          name: 'SubSidebar',
-          props: {
-            width: '',
-            height: '',
-            clickEvent: this.switchSlots
-          },
-          class: {
-            'sub-sidebar': true
-          },
-          slots: [
-            {slotName: 'list', component: 'SidebarList',  props: {
-              sidebarLists: [
-                {title: "그룹 정보", component: 'studyGroupInfo'},
-                {title: "스터디그룹 게시판", component: 'studyGroupBoard'},
-                {title: "그룹 정보 관리", component: 'studyGroupInfoManagement'},
-                {title: "멤버 관리", component: 'studyMemberManagement'},
-                {title: "참가 요청 내역", component: 'participationRequestList'},
-                {title: "그룹 초대 내역", component: 'invitationList'},
-                {title: "그룹 탈퇴", component: 'studyGroupSignOut'},
-              ],
-            }}
-          ]
-        },
-        {
           name: 'PageContent',
           class: {
-            "main-content": true
           },
           props: {
             width: '',
@@ -85,7 +60,7 @@ export default {
   },
   render(createElement) {
     // 여기서 케이스 나누자
-    return this.$templateLoad(createElement, this.template);
+    return this.$subTemplateLoad(createElement, this.template);
   },
 }
 </script>
