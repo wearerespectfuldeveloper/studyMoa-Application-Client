@@ -11,19 +11,19 @@
                 <div class="form-group row m-b-15">
                     <label class="col-form-label col-md-2">제목</label>
                     <div class="col-md-4">
-                        {{ post.title }}
+                        <input type="text" class="form-control m-b-5" v-model="post.title" :readonly="isDetail"/>
                     </div>
                 </div>
                 <div class="form-group row m-b-15">
                     <label class="col-form-label col-md-2">내용</label>
                     <div class="col-md-4">
-                        {{post.content}}
+                        <textarea style="resize: none;" class="form-control m-b-5" v-model="post.content" :readonly="isDetail"/>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <nuxt-link :to="{path:'/board/chat-board'}"><button class="btn btn-primary" type="button">목록</button></nuxt-link>
-                <a href="#">수정</a>
+                <button type="button" class="btn btn-primary">수정</button>
             </div>
 
         </form>
@@ -38,7 +38,8 @@
         data(){
             return{
                 post:{},
-                service: new BoardService()
+                service: new BoardService(),
+                isDetail: false
             }
         },
         mounted(){
