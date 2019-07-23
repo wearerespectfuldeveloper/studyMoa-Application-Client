@@ -12,17 +12,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="post in list">
-                <th scope="row">1</th>
+            <tr v-for="(post, index) in list">
+                <th scope="row">{{index+1}}</th>
                 <td>{{ post.writer }}</td>
-                <td>{{ post.title }}</td>
+                <td>
+                   <nuxt-link :to="{path: '/board/chat-detail', query:{id: post.id}}"> {{ post.title }}</nuxt-link>
+                </td>
                 <td>{{ post.created_dt }}</td>
                 <td>{{ post.volume }}</td>
             </tr>
             </tbody>
         </table>
             <div>
-                <nuxt-link to="/board/chat-add" style="float: right;" class="btn btn-success">글쓰기</nuxt-link>
+                <nuxt-link :to="{path:'/board/chat-add'}" style="float: right;" class="btn btn-success">글쓰기</nuxt-link>
             </div>
         </form>
     </div>

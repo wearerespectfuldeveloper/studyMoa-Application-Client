@@ -18,8 +18,8 @@
             </div>
 
             <div class="form-group">
+                <nuxt-link :to="{path:'/board/chat-board'}"><button class="btn btn-primary" type="button">목록</button></nuxt-link>
                 <button class="btn btn-primary " name="submit" type="button">글쓰기</button>
-                <button class="btn btn-primary " name="submit" type="button">목록</button>
             </div>
 
         </form>
@@ -27,8 +27,24 @@
 </template>
 
 <script>
+    import BoardService from '@/service/board.service';
+
     export default {
-        name: "chat-add"
+        name: "chat-add",
+        data(){
+            return{
+                post:{},
+                service: new BoardService()
+            }
+        },
+        mounted(){
+            this.init();
+        },
+        methods:{
+            init(){
+
+            }
+        }
     }
 </script>
 
