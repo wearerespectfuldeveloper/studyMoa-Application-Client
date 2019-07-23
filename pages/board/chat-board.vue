@@ -1,5 +1,15 @@
 <template>
     <div id="chat-board" style="margin: 35px;">
+        <div>
+            <h2>잡담 게시판</h2>
+        <div class="form-group">
+            <select class="form-control" style="width: 100px; float: right; margin-bottom: 10px;" >
+                <option :value="null">최신순</option>
+                <option :value="1">추천순</option>
+                <option :value="2">조회수순</option>
+            </select>
+        </div>
+        </div>
         <form>
         <table class="table table-hover">
             <thead>
