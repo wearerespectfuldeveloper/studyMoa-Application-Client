@@ -30,7 +30,7 @@ export default {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   background-color: $ColoredPageHeaderColor;
-
+   align-items: right;
   .title {
     color: white;
     margin-left: 20px;
