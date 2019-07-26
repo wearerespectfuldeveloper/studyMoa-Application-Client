@@ -6,41 +6,22 @@
 그외의, padding, margin과 기타 배치를 위한 css 속성들은 해당 컴포넌트 안에서 지정합니다.
 */
 
-// 링크 리스트 하얀 텍스트
-@mixin anchor-list-light {
-  li {
-    list-style-type: none;
-    color: white;
-    a {
-      text-decoration: none;
-      color: white;
-      font-weight: 800;
-      &:hover {
-        color: #e0f4fd;
-      }
-    }
-  }
+
+// ------------ div(wrapper)
+@mixin square-block($widthAndHeight) {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: $widthAndHeight;
+  height: $widthAndHeight;
 }
+// ------------ heading
 
-// 링크 리스트 어두운 텍스트
-@mixin anchor-list-dark {
-  li {
-    list-style-type: none;
-    color: #303030;
-    a {
-      text-decoration: none;
-      color: #303030;
-      font-weight: 800;
-      &:hover {
-        color: #7e7e7e;
-      }
-    }
-  }
-}
+// ------------ paragraph, text, label
 
-
-//-------------- 버튼
-
+// ------------ anchor, button
 // 배경없이 텍스트만 있는 버튼
 @mixin text-anchor-button($color) {
   display: inline-block;
@@ -97,17 +78,7 @@
     bottom:0;
   }
 }
-
-// 정사각형 블록
-@mixin square-block($widthAndHeight) {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  width: $widthAndHeight;
-  height: $widthAndHeight;
-}
+// ------------ img, svg
 
 // 유저 아바타
 @mixin avatar($widthAndHeight) {
@@ -115,19 +86,56 @@
   height: $widthAndHeight;
 }
 
+// 이미지
+@mixin imgWithRoundBorderAndPadding {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  padding: 5px;
+  border: 10px solid rgba(189, 189, 189, 0.5);
+}
 
+
+// ------------ list
+
+// ------------ table
+
+// ------------ input
 
 // 인풋
-
-@mixin bottomBorderInput {
+@mixin inputWithBottomBorder {
   padding: 10px;
   border: none;
   border-bottom: 1px solid $inputBottomBorderColor;
 }
 
+@mixin inputBasic  {
+  border: 1px solid rgba($color: #6b6b6b, $alpha: 0.3);
+  padding: 10px;
+}
+
+@mixin inputIconWithBackgroundColor ($backgroundColor) {
+  background-color: $backgroundColor;
+  color: white;
+  padding: 10px;
+  border: none;
+}
+
+@mixin inputIcon ($color) {
+  color: $color;
+  padding: 10px;
+  border: none;
+}
+
+@mixin inputLabelBasic {
+  font-weight: 600;
+  padding: 10px;
+}
+
+
+// ------------ textarea
 
 // 텍스트 AREA
-
 @mixin bottomBorderTextarea {
   resize: none;
   padding: 10px;
@@ -150,9 +158,12 @@
   cursor: pointer;
 }
 
+// ------------ select
 
-// 아이콘
-
-@mixin clickableIcon($iconColor) {
-
+// 셀렉트 박스
+@mixin selectboxBasic {
+  padding: 10px;
+  border: 1px solid rgba($color: #6b6b6b, $alpha: 0.3);
 }
+
+

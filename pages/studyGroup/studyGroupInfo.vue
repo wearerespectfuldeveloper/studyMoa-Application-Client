@@ -1,18 +1,45 @@
 
 <script>
 import template from '@/assets/js/template'
+import { mapState } from 'vuex'
 
-export default {
-  data () {
-    return {
+class TestTemplate {
+  constructor (data) {
+    this.template = data;
+  }
+}
+
+let Temp = new TestTemplate({
+      // 구조
+      PageContent: {
+        name: 'PageContent',
+        props: {
+          width: '',
+          height: '',
+        },
+        slots: []
+      },
+
+      Modal: {
+        name: 'Modal',
+        props: {
+          width: '60%',
+          height: '80%',
+          showButton: false
+        },
+        slots: []
+      },
+
+      // 슬롯 리스트
       pageContentSlotList: [
         {slotName: 'middle', component: 'ContentHeader', props: {
           width: '90%',
           title: '스터디그룹 소개',
+          buttonText: '테스트'
         }},
         {slotName: 'middle', component: 'Document', props: {
           width: '90%',
-          paragraph: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
+          paragraph: ""
         }},
         {slotName: 'middle', component: 'ContentHeader', props: {
           width: '90%',
@@ -37,7 +64,6 @@ export default {
           width: '90%',
           title: '스터디 진행 기록',
           buttonText: '작성하기',
-          buttonClickEvent: this.test_method
         }},
         {slotName: 'middle', component: 'TextBlocks', props: {
           width: '90%',
@@ -52,6 +78,7 @@ export default {
           ]
         }}
       ],
+
       modalSlotList: [
         {slotName: 'header', component: 'ColoredPageHeader', props: {
           width: '100%',
@@ -66,85 +93,52 @@ export default {
           width: '80%'
         }},
       ]
-    }
+    })
+
+export default {
+  data () {
+    return Temp.template;
   },
   computed: {
-    template () {
-      return [
-        {
-          name: 'PageContent',
-          class: {
-          },
-          props: {
-            width: '',
-            height: '',
-          },
-          slots: this.pageContentSlotList
-        },
-        {
-          name: 'Modal',
-          class: {
-          },
-          props: {
-            width: '60%',
-            height: '80%',
-            showButton: false
-          },
-          slots: this.modalSlotList
-        }
-      ]
-    }
+    ...mapState('studyGroup/studyGroupInfo', {
+      studyGroupDesc: state => state.studyGroupDesc,
+    }),
+    
   },
   mounted() {
 
-    template.A.methodPointer = this
+    // template.A.methodPointer = this
 
-    console.log(template.A.test_method())
+    // console.log(template.A.test_method())
 
     // this.test_method = template.A.test_method;
 
     // this.test_method()
   },
-  render(createElement) {
-
-    
-    // return createElement('h1', 'testing!')
-
-    // console.log(template.studyGroupInfo);
-
-    // template.pointer = this;
-
-    // this.switch_components(template.studyGroupInfo, 'Modal', template.studyProgressSlots)
-
-    // this.insert_method(template.studyGroupInfo, 'PageContent', 'ContentHeader', this.test_method)
-
-    // // 여기도 반응형은 아닐 것 같은데
-    return this.$subTemplateLoad(createElement, this.template);
-  
-  },
   methods: {
 
     // 슬롯 리스트 데이터를 받고, 어느 프레임의 슬롯 리스트를 교체할 것인지. 근데 하나의 유기체에서는 하나의 프레임만 써야한다는 제한 같은 걸 걸지 않으면 음... 자동으로 생성되는 아이디 같은게 있어서 식별자 역할을 해줘야 하겠네.
 
-    switch_components (target, templateName, list) {
-      const targetIndex = target.findIndex(x => x.name === templateName);
-      target[targetIndex].slots = list
-    },
-
     test_method () {
-      location.href="#open-modal"
+      alert('work!')
       this.modalSlotList.pop();
-    },
-
-    insert_method (target, templateName, componentName, method) {
-      const targetIndex = target.findIndex(x => x.name === templateName);
-      const targetComponentIndex = target[targetIndex].slots.findIndex(y => y.props.title === '스터디 진행 기록');
-
-      console.log(method)
-
-      target[targetIndex].slots[targetComponentIndex].props.buttonClickEvent = method;
     }
-  }
+  },
+  render(createElement) {
+
+    // 여기서 조립
+
+    this.PageContent.slots = this.pageContentSlotList;
+    
+    this.PageContent.slots[this.PageContent.slots.findIndex(x => x.component === 'Document')].props.paragraph = this.studyGroupDesc;
+
+    this.PageContent.slots[this.PageContent.slots.findIndex(x => x.component === 'ContentHeader')].props.buttonClickEvent = this.test_method;
+
+    this.Modal.slots = this.modalSlotList;
+
+    return this.$subTemplateLoad(createElement, [this.PageContent, this.Modal]);
+  
+  },
 }
 </script>
 

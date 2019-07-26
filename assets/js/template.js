@@ -5,7 +5,9 @@
 class Create_template {
   constructor () {
     
-    this.organism = [];
+    this.structure = {
+      
+    };
     
     this.test = "test";
 

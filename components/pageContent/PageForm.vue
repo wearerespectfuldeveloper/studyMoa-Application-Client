@@ -81,7 +81,7 @@ export default {
       @include boldLabel;
     }
     input {
-      @include bottomBorderInput;
+      @include inputWithBottomBorder;
     }
     margin-bottom: 20px;
 
@@ -131,7 +131,7 @@ export default {
       }
 
       input {
-        @include bottomBorderInput;
+        @include inputWithBottomBorder;
       }
     }
   }
