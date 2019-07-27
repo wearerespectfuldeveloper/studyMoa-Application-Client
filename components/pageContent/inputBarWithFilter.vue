@@ -8,7 +8,7 @@
     
     <div class="selectbox-list" v-if="showSelectbox">
       <select v-for="selectbox in selectboxs" :key="selectbox.id" class="selectbox" >
-        <option class="option" v-for="option in selectbox.options" :key="option.id" :value="option.value">{{option.name}}</option>
+        <option class="option" v-for="option in selectbox.options" :key="option.id">{{option.name}}</option>
       </select>
     </div>
   </div>
@@ -58,11 +58,11 @@ export default {
       default: function () {
         return [
           {id: 'select1', options: [
-            {id: 1, value: 1, name: 'option1'},
-            {id: 2, value: 2, name: 'option2'},
-            {id: 3, value: 3, name: 'option3'},
-            {id: 4, value: 4, name: 'option4'},
-            {id: 5, value: 5, name: 'option5'},
+            {id: 1, name: 'option1'},
+            {id: 2, name: 'option2'},
+            {id: 3, name: 'option3'},
+            {id: 4, name: 'option4'},
+            {id: 5, name: 'option5'},
           ]}
         ]
       }

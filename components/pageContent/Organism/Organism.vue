@@ -1,63 +1,65 @@
-<template>
-  
-</template>
-
 <script>
+import classes from '@/assets/js/organism.js';
+import { mapState } from 'vuex';
 
-class cell {
-  constructor (slotName, componentName, _class, props) {
-    // 일단은 난수로 넣었지만 나중에 바꿔야 함. 더 좋은 아이디 삽입법에는 뭐가 있으려나
-    this.id = Math.floor(Math.random()*1000000)
-    this.slotName = slotName;
-    this.componentName = componentName;
-    this.class = _class;
-    this.props = props;
-    this.on = function () {
-      console.log('nothing happenend!')
-    };
-    this.nativeOn = function () {
-      console.log('nothing happenend!')
-    };
-  }
-  attach_on (method) {
-    this.on = method;
-  }
+// ----------------- 유기체 조립하기
 
-  attach_native_on (method) {
-    this.nativeOn = method;
-  }
-  
-  set_props (propName, propValue) {
-    this.props[propName] = propValue;
-  }
+// 분자 컴포넌트들 생성하기 - prop 안 넘겨준건 기본 동작으로 그냥 생성만 하도록 해야겠는걸
 
-}
+const inputBarWithFilter = new classes.Cell("InputBarWithFilter", "input-molecule-control", {
+  icon: "edit"
+});
 
-class organism {
-  constructor (structureName) {
-    this.structureName = structureName;
-    this.slots = [];
-  }
+const contentHeader = new classes.Cell("ContentHeader", "content-header-molecule-control", {
+  buttonText: "클릭하기"
+});
 
-  set_props (propName, propValue) {
-    this.props[propName] = propValue;
-  }
+contentHeader.set_props("buttonClickEvent", function () {
+  inputBarWithFilter.set_props("icon", "pen")
+});
 
-  insert_slot(slot) {
-    this.slots.push(slot);
-  }
+// 담을 유기체 생성하기
+const searchOrganism = new classes.Organism("Basic", "organism-control");
 
-  delete_slot(slot) {
-    this.slots.findIndex(x => x ==)
-  }
-}
+searchOrganism.push_slot(inputBarWithFilter, "main");
+searchOrganism.push_slot(contentHeader, "main");
+
+
+
+
+// -----------------------------------------------
+
+
 
 export default {
-  // 아 프랍이 아니라 라우트에서 받아야겠구나
-  
+  data () {
+    return {
+      organism: null
+    }
+  },
+  render (createElement) {
+    this.organism = searchOrganism;
+    return searchOrganism.start_rendering(createElement, this.organism)
+  },
+  methods: {
+    test_method () {
+      this.organism.pop_slot();
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+// 정렬에 관해서는 여기서 추가적으로 제어 가능
+.organism-control {
+  align-content: center;
+}
 
+.input-molecule-control {
+
+}
+
+.content-header-molecule-control {
+
+}
 </style>

@@ -66,13 +66,6 @@ export default {
         console.log('nothing happened');
       }
     }
-  },
-  data () {
-    return {
-        
-    }
-  },
-  components: {
   }
 }
 </script>

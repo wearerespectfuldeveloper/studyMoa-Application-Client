@@ -1,27 +1,25 @@
 <template>
   <div class="">
-    <h1 v-for="k in data" :key="k.idx">
-      {{k.title}}
-    </h1>
-    <h1>{{status}}</h1>
-
     <Organism></Organism>
+    {{categories}}
   </div>
   
 </template>
 
 <script>
-export default {
-  asyncData(context) {
-    console.log(context)
-    return context.$axios.get(this.getURL)
-    .then((res) => {
-      const dataObj = {}
-      dataObj.data = res.data;
-      dataObj.status = res.status;
+import { mapState, mapMutations } from 'vuex';
 
-      return dataObj;
-    });
+export default {
+  fetch ({$axios, store}) {
+    return $axios.get("/categories")
+      .then(res => {
+        store.commit("studyGroup/set_categories", res.data)
+      });
+  },
+  computed: {
+    ...mapState('studyGroup', {
+      categories: state => state.categories
+    })
   },
 }
 </script>

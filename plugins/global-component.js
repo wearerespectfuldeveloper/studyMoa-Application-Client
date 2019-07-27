@@ -24,6 +24,7 @@ import PageHeader from '@/components/pageContent/PageHeader/PageHeader';
 import PageContent from '@/components/pageContent/PageContent/PageContent';
 import SubSidebar from '@/components/pageContent/SubSidebar/SubSidebar';
 import Organism from '@/components/pageContent/Organism/Organism';
+import Basic from '@/components/pageContent/ContentStructure/Basic';
 
 
 Vue.component('ContentHeader', ContentHeader);
@@ -45,6 +46,8 @@ Vue.component('PageHeader', PageHeader);
 Vue.component('PageContent', PageContent);
 Vue.component('SubSidebar', SubSidebar);
 Vue.component('Organism', Organism);
+Vue.component('Basic', Basic);
+
 
 
 

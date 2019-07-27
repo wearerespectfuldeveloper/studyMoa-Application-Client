@@ -29,7 +29,8 @@ export default {
   */
   plugins: [
     "~/plugins/global-component.js",
-    "~/plugins/global-method.js"
+    "~/plugins/global-method.js",
+    "~/plugins/axios.js"
   ],
   /*
   ** Nuxt.js modules
@@ -49,7 +50,12 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true,
   },
+  proxy: {
+    api: "http://13.124.229.15:8081/"
+  },
+
   /*
   ** Build configuration
   */

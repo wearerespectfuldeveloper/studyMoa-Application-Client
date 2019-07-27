@@ -1,6 +1,5 @@
 
 <script>
-import template from '@/assets/js/template'
 import { mapState } from 'vuex'
 
 class TestTemplate {

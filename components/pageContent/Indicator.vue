@@ -1,5 +1,8 @@
 <template>
-  <div class="indicator-container">
+  <div 
+    class="indicator-container"
+    :style="{'width': width, 'height': height}"
+  >
     <div class="indicator">
       <label for="">{{indicator1Label}}</label><span>{{indicator1Text}}</span>
     </div>
@@ -17,19 +20,19 @@ export default {
   props: {
     indicator1Label: {
       type: String,
-      default: '기준1'
+      default: '기준 1 :'
     },
     indicator1Text: {
       type: String,
-      default: '기준1텍스트'
+      default: '무엇'
     },
     indicator2Label: {
       type: String,
-      default: '기준2'
+      default: '기준 2 :'
     },
     indicator2Text: {
       type: String,
-      default: '기준2텍스트'
+      default: '무엇'
     }
   }
 }

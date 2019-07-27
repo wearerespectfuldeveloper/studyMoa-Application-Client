@@ -81,7 +81,9 @@ export default {
     },
     blocks: {
       type: Array,
-      default: []
+      default: function () {
+        return []
+      }
     }
   },
   components: {

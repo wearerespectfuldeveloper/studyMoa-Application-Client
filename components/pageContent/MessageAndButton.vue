@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="alarm-container"
+    class="message-and-button-container"
     :style="{'width': width, 'height': height}"  
   >
     <h2 class="message">{{message}}</h2>
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.alarm-container {
+.message-and-button-container {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -57,6 +57,5 @@ export default {
       @include border-transition-button($confirmButtonColor);
     }
   }
-  
 }
 </style>
