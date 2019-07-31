@@ -26,71 +26,10 @@
     />
     
 
-    <div class="selectbox-list-with-result-text">
-      <label class="label">분류 결과 텍스트</label>
-      <select class="selectbox">
-        <option value="1">option 1</option>
-        <option value="2">option 2</option>
-        <option value="3">option 3</option>
-        <option value="4">option 4</option>
-        <option value="5">option 5</option>
-      </select>
-      <select class="selectbox">
-        <option value="1">option 1</option>
-        <option value="2">option 2</option>
-        <option value="3">option 3</option>
-        <option value="4">option 4</option>
-        <option value="5">option 5</option>
-      </select>
-      <select class="selectbox">
-        <option value="1">option 1</option>
-        <option value="2">option 2</option>
-        <option value="3">option 3</option>
-        <option value="4">option 4</option>
-        <option value="5">option 5</option>
-      </select>
-    </div>
+    
 
     <!-- 반복되는 태그가 있는 분자에는 container를 사용 -->
-    <div class="descriptive-block-with-img-container">
-
-      <div class="descriptive-block-with-img box-shadow">
-        <img class="img" src="@/assets/img/avatar.png" alt="">
-        <h1 class="heading">Heading</h1>
-        <p class="text">Text</p>
-      </div>
-
-      <div class="descriptive-block-with-img box-shadow">
-        <img class="img" src="@/assets/img/avatar.png" alt="">
-        <h1 class="heading">Heading</h1>
-        <p class="text">Text</p>
-      </div>
-
-      <div class="descriptive-block-with-img box-shadow">
-        <img class="img" src="@/assets/img/avatar.png" alt="">
-        <h1 class="heading">Heading</h1>
-        <p class="text">Text</p>
-      </div>
-
-      <div class="descriptive-block-with-img box-shadow">
-        <img class="img" src="@/assets/img/avatar.png" alt="">
-        <h1 class="heading">Heading</h1>
-        <p class="text">Text</p>
-      </div>
-
-      <div class="descriptive-block-with-img box-shadow">
-        <img class="img" src="@/assets/img/avatar.png" alt="">
-        <h1 class="heading">Heading</h1>
-        <p class="text">Text</p>
-      </div>
-
-      <div class="descriptive-block-with-img box-shadow">
-        <img class="img" src="@/assets/img/avatar.png" alt="">
-        <h1 class="heading">Heading</h1>
-        <p class="text">Text</p>
-      </div>
-
-    </div>
+    
 
   </div>
 

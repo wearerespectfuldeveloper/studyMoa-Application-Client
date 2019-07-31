@@ -15,6 +15,9 @@ import PageForm from '@/components/pageContent/PageForm';
 import Indicator from '@/components/pageContent/Indicator';
 import MessageAndButton from '@/components/pageContent/MessageAndButton';
 import InputBarWithFilter from '@/components/pageContent/InputBarWithFilter';
+import SelectboxListWithResultText from '@/components/pageContent/SelectboxListWithResultText';
+import GridBlocks from '@/components/pageContent/GridBlocks';
+
 
 
 
@@ -39,6 +42,8 @@ Vue.component('PageForm', PageForm);
 Vue.component('Indicator', Indicator);
 Vue.component('MessageAndButton', MessageAndButton);
 Vue.component('InputBarWithFilter', InputBarWithFilter);
+Vue.component('SelectboxListWithResultText', SelectboxListWithResultText);
+Vue.component('GridBlocks', GridBlocks);
 
 
 Vue.component('Modal', Modal);
@@ -47,7 +52,6 @@ Vue.component('PageContent', PageContent);
 Vue.component('SubSidebar', SubSidebar);
 Vue.component('Organism', Organism);
 Vue.component('Basic', Basic);
-
 
 
 

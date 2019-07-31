@@ -1,19 +1,19 @@
 <template>
   <div class="basic-container">
     <div class="pageHeader">
-      <slot name=""></slot>
+      <slot name="header"></slot>
     </div>
     <div class="mainArticle">
-      <slot name=""></slot>
+      <slot name="content"></slot>
     </div>
     <div class="mainNav">
-      <slot name=""></slot>
+      <slot name="sidebar"></slot>
     </div>
     <div class="siteAds">
-      <slot name=""></slot>
+      <slot name="ads"></slot>
     </div>
     <div class="pageFooter">
-      <slot name=""></slot>
+      <slot name="footer"></slot>
     </div>
   </div>
 </template>

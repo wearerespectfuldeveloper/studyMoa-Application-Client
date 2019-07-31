@@ -24,6 +24,7 @@
 // ------------ anchor, button
 // 배경없이 텍스트만 있는 버튼
 @mixin text-anchor-button($color) {
+  background: none;
   display: inline-block;
   color: $color;
   text-decoration: none;
@@ -87,7 +88,7 @@
 }
 
 // 이미지
-@mixin imgWithRoundBorderAndPadding {
+@mixin imgWithRoundBorderAndPadding ($borderColor) {
   width: 200px;
   height: 200px;
   border-radius: 50%;

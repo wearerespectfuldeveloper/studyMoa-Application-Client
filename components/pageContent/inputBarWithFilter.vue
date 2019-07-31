@@ -3,12 +3,12 @@
     <div class="input-with-icon-and-label">
       <i :class="'fas fa-' + icon + ' ' + iconStyle" v-if="showIcon"></i>
       <label class="input-label" v-if="showLabel">{{labelText}}</label>
-      <input :class="inputStyle" type="text">
+      <input :class="inputStyle" type="text" :value="text">
     </div>
     
     <div class="selectbox-list" v-if="showSelectbox">
       <select v-for="selectbox in selectboxs" :key="selectbox.id" class="selectbox" >
-        <option class="option" v-for="option in selectbox.options" :key="option.id">{{option.name}}</option>
+        <option class="option" v-for="option in selectbox.options" :key="option.id">{{option.title}}</option>
       </select>
     </div>
   </div>
@@ -58,14 +58,18 @@ export default {
       default: function () {
         return [
           {id: 'select1', options: [
-            {id: 1, name: 'option1'},
-            {id: 2, name: 'option2'},
-            {id: 3, name: 'option3'},
-            {id: 4, name: 'option4'},
-            {id: 5, name: 'option5'},
+            {id: 1, title: 'option1'},
+            {id: 2, title: 'option2'},
+            {id: 3, title: 'option3'},
+            {id: 4, title: 'option4'},
+            {id: 5, title: 'option5'},
           ]}
         ]
       }
+    },
+    text: {
+      type: String,
+      default: '텍스트'
     }
   },
 }

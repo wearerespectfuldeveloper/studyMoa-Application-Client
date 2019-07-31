@@ -14,17 +14,16 @@ const contentHeader = new classes.Cell("ContentHeader", "content-header-molecule
   buttonText: "클릭하기"
 });
 
-contentHeader.set_props("buttonClickEvent", function () {
-  inputBarWithFilter.set_props("icon", "pen")
-});
 
 // 담을 유기체 생성하기
 const searchOrganism = new classes.Organism("Basic", "organism-control");
 
-searchOrganism.push_slot(inputBarWithFilter, "main");
-searchOrganism.push_slot(contentHeader, "main");
+searchOrganism.push_slot(inputBarWithFilter, "middle");
+searchOrganism.push_slot(contentHeader, "middle");
 
-
+contentHeader.set_props("buttonClickEvent", function () {
+      console.log(this)
+    });
 
 
 // -----------------------------------------------
@@ -39,6 +38,13 @@ export default {
   },
   render (createElement) {
     this.organism = searchOrganism;
+
+    console.log()
+
+    inputBarWithFilter.set_props("text", this.$store.state.studyGroup.testText)
+
+    
+
     return searchOrganism.start_rendering(createElement, this.organism)
   },
   methods: {
