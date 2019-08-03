@@ -35,12 +35,12 @@ export default {
   data () {
     return {
       userBlocks: [
-        {heading: 'person1', text: '프론트엔드', id: 0, imgSrc: "~/assets/img/avatar.png" },
-        {heading: 'person2', text: '백엔드', id: 1, imgSrc: "~/assets/img/avatar.png"  },
-        {heading: 'person1', text: '프론트엔드', id: 2, imgSrc: "~/assets/img/avatar.png"  },
-        {heading: 'person2', text: '백엔드', id: 3, imgSrc: "~/assets/img/avatar.png"  },
-        {heading: 'person1', text: '프론트엔드', id: 4, imgSrc: "~/assets/img/avatar.png"  },
-        {heading: 'person2', text: '백엔드', id: 5, imgSrc: "~/assets/img/avatar.png"  }
+        {heading: 'person1', text: '프론트엔드', id: 0, imgSrc: require("~/assets/img/avatar.png") },
+        {heading: 'person2', text: '백엔드', id: 1, imgSrc: require("~/assets/img/avatar.png") },
+        {heading: 'person1', text: '프론트엔드', id: 2, imgSrc: require("~/assets/img/avatar.png") },
+        {heading: 'person2', text: '백엔드', id: 3, imgSrc: require("~/assets/img/avatar.png") },
+        {heading: 'person1', text: '프론트엔드', id: 4, imgSrc: require("~/assets/img/avatar.png") },
+        {heading: 'person2', text: '백엔드', id: 5, imgSrc: require("~/assets/img/avatar.png") }
       ],
       resultText: "적용된 검색 카테고리 : ",
       selectboxs: [
